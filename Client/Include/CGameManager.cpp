@@ -1,4 +1,5 @@
 #include "CGameManager.h"
+#include "CTimer.h"
 #include "resource.h"
 
 DEFINITION_SINGLE(CGameManager);
@@ -9,6 +10,7 @@ CGameManager::CGameManager()
     : m_hInst{}
     , m_hWnd{}
     , gdiplusToken{}
+    , m_Timer{}
     , m_hMenu{}
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -17,7 +19,9 @@ CGameManager::CGameManager()
 
 CGameManager::~CGameManager()
 {
+    SAFE_DELETE(m_Timer);
 
+    Gdiplus::GdiplusShutdown(gdiplusToken);
 }
 
 bool CGameManager::Init(HINSTANCE hInst)
@@ -42,6 +46,10 @@ bool CGameManager::Init(HINSTANCE hInst)
 
         return false;
     }
+
+    m_Timer = new CTimer{};
+
+    m_Timer->Init();
 
     return true;
 }
@@ -69,10 +77,8 @@ int CGameManager::Run()
 
 void CGameManager::Logic()
 {
-
+    m_Timer->Update();
   
-
-
     Input();
     Update();
     PostUpdate();
@@ -87,12 +93,12 @@ void CGameManager::Input()
 
 bool CGameManager::Update()
 {
-    return false;
+    return true;
 }
 
 bool CGameManager::PostUpdate()
 {
-    return false;
+    return true;
 }
 
 void CGameManager::Collision()

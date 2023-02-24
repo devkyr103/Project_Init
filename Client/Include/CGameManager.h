@@ -10,6 +10,8 @@ private:
 	HWND		m_hWnd;			// 윈도우 인스턴스 핸들
 	ULONG_PTR	gdiplusToken;	// GDI+ 토큰
 
+	class CTimer* m_Timer;
+
 	HMENU		m_hMenu;		// 메뉴 핸들
 
 	static bool m_Loop;			// 프로그램 종료에 사용됨(WndProc)

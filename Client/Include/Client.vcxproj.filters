@@ -93,6 +93,12 @@
     <ClInclude Include="CGameManager.h">
       <Filter>01. GameManager</Filter>
     </ClInclude>
+    <ClInclude Include="CTimer.h">
+      <Filter>01. GameManager\01. Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameObject.h">
+      <Filter>02. GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -100,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="CGameManager.cpp">
       <Filter>01. GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimer.cpp">
+      <Filter>01. GameManager\01. Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameObject.cpp">
+      <Filter>02. GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

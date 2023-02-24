@@ -150,12 +150,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CGameManager.h" />
+    <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CTimer.h" />
     <ClInclude Include="GameInfo.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SingletonMacro.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGameManager.cpp" />
+    <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CTimer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
