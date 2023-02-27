@@ -2,20 +2,20 @@
 
 #define DECLARE_SINGLE(Type)	\
 private:\
-	static	Type*	m_Inst;\
+	static	Type*	mInst;\
 public:\
 	inline static	Type*	GetInst()\
 	{\
-		if(!m_Inst)\
-			m_Inst = new Type;\
-		return m_Inst;\
+		if(!mInst)\
+			mInst = new Type;\
+		return mInst;\
 	}\
 	inline static void DestroyInst()\
 	{\
-		if(m_Inst)\
+		if(mInst)\
 		{\
-			delete m_Inst;\
-			m_Inst = nullptr;\
+			delete mInst;\
+			mInst = nullptr;\
 		}\
 	}\
 private:\
@@ -23,4 +23,4 @@ private:\
 	~Type();
 
 // 인스턴스를 위한 static 멤버 정의 메크로
-#define DEFINITION_SINGLE(Type)	Type*	Type::m_Inst = nullptr;
+#define DEFINITION_SINGLE(Type)	Type*	Type::mInst = nullptr;

@@ -149,18 +149,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CGameManager.h" />
+    <ClInclude Include="CApplication.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="CResource.h" />
+    <ClInclude Include="CTitleObject.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="CEntity.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="CGameObject.h" />
-    <ClInclude Include="CTimer.h" />
-    <ClInclude Include="GameInfo.h" />
+    <ClInclude Include="CInput.h" />
+    <ClInclude Include="CPlayScene.h" />
+    <ClInclude Include="CImage.h" />
+    <ClInclude Include="CLayer.h" />
+    <ClInclude Include="CMath.h" />
+    <ClInclude Include="CPlayableObject.h" />
+    <ClInclude Include="CResources.h" />
+    <ClInclude Include="CScene.h" />
+    <ClInclude Include="CSceneManager.h" />
+    <ClInclude Include="CTime.h" />
+    <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SingletonMacro.h" />
+    <ClInclude Include="CTitleScene.h" />
+    <ClInclude Include="CTransform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CGameManager.cpp" />
+    <ClCompile Include="CApplication.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="CResource.cpp" />
+    <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="CGameObject.cpp" />
-    <ClCompile Include="CTimer.cpp" />
+    <ClCompile Include="CInput.cpp" />
+    <ClCompile Include="CPlayScene.cpp" />
+    <ClCompile Include="CImage.cpp" />
+    <ClCompile Include="CLayer.cpp" />
+    <ClCompile Include="CMath.cpp" />
+    <ClCompile Include="CPlayableObject.cpp" />
+    <ClCompile Include="CResources.cpp" />
+    <ClCompile Include="CScene.cpp" />
+    <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="CTime.cpp" />
+    <ClCompile Include="CTitleObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CTitleScene.cpp" />
+    <ClCompile Include="CTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

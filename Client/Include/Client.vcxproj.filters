@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="헤더 파일">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -13,105 +9,181 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="01. GameManager">
-      <UniqueIdentifier>{c16329d4-07e2-4b92-9f1a-e59434a2768d}</UniqueIdentifier>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{7c1fab5e-62b2-47f1-ad7b-1fd381267665}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject">
-      <UniqueIdentifier>{bfb20a72-09ea-4bd1-bc57-d565cd5f6835}</UniqueIdentifier>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{150adf38-13e0-4b30-8a11-753559a98199}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Scene">
-      <UniqueIdentifier>{f03bc316-0a14-45f1-88cb-8e7d76e55925}</UniqueIdentifier>
+    <Filter Include="main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="04. Resource">
-      <UniqueIdentifier>{ee7a49b5-d527-4ade-93dd-019a362c986a}</UniqueIdentifier>
+    <Filter Include="Engine\Common">
+      <UniqueIdentifier>{161143f8-39d0-4568-854a-d19117ef8bc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05.Animation">
-      <UniqueIdentifier>{9be1eb5a-16fa-4850-a570-b4516112ab19}</UniqueIdentifier>
+    <Filter Include="Engine\Component">
+      <UniqueIdentifier>{95c39e35-fc82-4d7e-a90a-6b104fc2d24e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="06. Collision">
-      <UniqueIdentifier>{d481def5-377e-406e-992d-92f1c840f326}</UniqueIdentifier>
+    <Filter Include="Engine\GameObject">
+      <UniqueIdentifier>{40a13aec-b257-4dbf-b7c5-0039bf2ce5a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="07. UI">
-      <UniqueIdentifier>{4ec6b9ad-487a-4b10-9187-7719a5ba1968}</UniqueIdentifier>
+    <Filter Include="Engine\High Level Interface">
+      <UniqueIdentifier>{4b32d898-0bf2-4d7d-96dd-36740c3356d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. GameManager\01. Timer">
-      <UniqueIdentifier>{880eac55-48d2-4e10-a64c-959f4a7123f1}</UniqueIdentifier>
+    <Filter Include="Engine\Input">
+      <UniqueIdentifier>{49f53074-6830-4922-8f48-f52dd2cd346f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. GameManager\02. Ref">
-      <UniqueIdentifier>{b81cbc90-33b9-4fc8-a119-d306f45106a7}</UniqueIdentifier>
+    <Filter Include="Engine\Layer">
+      <UniqueIdentifier>{751e4978-709d-4530-bbf4-81e724daa6c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. GameManager\03. SharedPtr">
-      <UniqueIdentifier>{0f396450-575b-47b0-b097-cb8bfded54b4}</UniqueIdentifier>
+    <Filter Include="Engine\Resource">
+      <UniqueIdentifier>{ac53a322-3ea9-4fb3-a45c-b3edcb78ff21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. GameManager\04. Input">
-      <UniqueIdentifier>{627ac286-8ca3-4814-9e24-6b98d6fa6096}</UniqueIdentifier>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{b2921516-e787-44bf-9af4-eeadd2f553e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. GameManager\05. Path">
-      <UniqueIdentifier>{ef9651b8-4467-4e58-bdd1-1ef06f1cf23e}</UniqueIdentifier>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{9a088896-12f7-43c3-8005-2fca1c0670f0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Scene\01. Resource">
-      <UniqueIdentifier>{a91f14ae-ad8c-4a8f-94d6-e0b8bbcbe13d}</UniqueIdentifier>
+    <Filter Include="Contents\Player">
+      <UniqueIdentifier>{65f61bba-ffc9-4518-bc80-29ec6469a4c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Scene\02. Camera">
-      <UniqueIdentifier>{b33f5c0d-efbc-4e22-b688-b0185d567265}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03.Scene\03. Collision">
-      <UniqueIdentifier>{b69cdb9e-dcc9-4de6-a3f9-bf4da021e661}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Resource\01. Textuer">
-      <UniqueIdentifier>{686ec8e9-cff3-49f2-bc7b-2b8743ed90e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Resource\02. Animation">
-      <UniqueIdentifier>{cc1bd8a7-3695-49d4-b216-35b63d171905}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Resource\03. Sound">
-      <UniqueIdentifier>{166d6627-8c74-47c8-bde0-3d560e3f4c3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Resource\04. Font">
-      <UniqueIdentifier>{d7af0b10-d39b-4948-97b7-b8e2026708d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="06. Collision\01. Collider">
-      <UniqueIdentifier>{1a983c93-fb4b-47ac-8f7b-edb5c0922a21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="07. UI\01. Widget">
-      <UniqueIdentifier>{53d7fb3b-6b5e-42e0-a66e-fea0c54430a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="07. UI\02. Window">
-      <UniqueIdentifier>{16561271-d2e0-4b99-b8d9-27ccbd3096eb}</UniqueIdentifier>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{b188a7f8-0a1a-4282-b7b7-24c26934646e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>main</Filter>
     </ClInclude>
-    <ClInclude Include="SingletonMacro.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="CApplication.h">
+      <Filter>Engine\High Level Interface</Filter>
     </ClInclude>
-    <ClInclude Include="GameInfo.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="CommonInclude.h">
+      <Filter>Engine\Common</Filter>
     </ClInclude>
-    <ClInclude Include="CGameManager.h">
-      <Filter>01. GameManager</Filter>
+    <ClInclude Include="CTime.h">
+      <Filter>Engine\Time</Filter>
     </ClInclude>
-    <ClInclude Include="CTimer.h">
-      <Filter>01. GameManager\01. Timer</Filter>
+    <ClInclude Include="Enums.h">
+      <Filter>Engine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Engine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntity.h">
+      <Filter>Engine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CTransform.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CMath.h">
+      <Filter>Engine\Common</Filter>
     </ClInclude>
     <ClInclude Include="CGameObject.h">
-      <Filter>02. GameObject</Filter>
+      <Filter>Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CLayer.h">
+      <Filter>Engine\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayableObject.h">
+      <Filter>Contents\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneManager.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonMacro.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="CResource.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CResources.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CImage.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="CTitleObject.h">
+      <Filter>Contents\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>main</Filter>
     </ClCompile>
-    <ClCompile Include="CGameManager.cpp">
-      <Filter>01. GameManager</Filter>
+    <ClCompile Include="CApplication.cpp">
+      <Filter>Engine\High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="CTimer.cpp">
-      <Filter>01. GameManager\01. Timer</Filter>
+    <ClCompile Include="CTime.cpp">
+      <Filter>Engine\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="CEntity.cpp">
+      <Filter>Engine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CTransform.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CMath.cpp">
+      <Filter>Engine\Common</Filter>
     </ClCompile>
     <ClCompile Include="CGameObject.cpp">
-      <Filter>02. GameObject</Filter>
+      <Filter>Engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CLayer.cpp">
+      <Filter>Engine\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneManager.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayableObject.cpp">
+      <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CResource.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CResources.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CImage.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleObject.cpp">
+      <Filter>Contents\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
