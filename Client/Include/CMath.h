@@ -4,6 +4,14 @@
 
 struct Vector2
 {
+	static Vector2 Up;
+	static Vector2 Down;
+	static Vector2 Left;
+	static Vector2 Right;
+
+	static Vector2 One;
+	static Vector2 Zero;
+
 	float x, y;
 
 	Vector2()

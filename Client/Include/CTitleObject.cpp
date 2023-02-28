@@ -4,11 +4,11 @@
 #include "CInput.h"
 #include "CResources.h"
 #include "CTransform.h"
+#include "CAnimator.h"
 
 namespace kyr
 {
 	CTitleObject::CTitleObject()
-		: mImage{}
 	{
 	}
 
@@ -18,7 +18,8 @@ namespace kyr
 
 	void CTitleObject::Initialize()
 	{
-		mImage = CResources::Load<CImage>(L"TitleObject", L"..\\Resources\\spr_abe_1.png");
+		CImage* mImage = CResources::Load<CImage>(L"TitleObject", L"..\\Resources\\spr_abe_1.png");
+		CAnimator* animator = AddComponent<CAnimator>();
 
 		CGameObject::Initialize();
 	}
@@ -55,9 +56,9 @@ namespace kyr
 	void CTitleObject::Render(Gdiplus::Graphics* gp)
 	{
 		CGameObject::Render(gp);
-		CTransform* tr = GetComponent<CTransform>();
-		Vector2 pos = tr->GetPos();
-		gp->DrawImage(mImage->GetImage(), (int)pos.x, (int)pos.y, 0, 0, (int)mImage->GetWidth(), (int)mImage->GetHeight(), Gdiplus::UnitPixel);
+		//CTransform* tr = GetComponent<CTransform>();
+		//Vector2 pos = tr->GetPos();
+		//gp->DrawImage(mImage->GetImage(), (int)pos.x, (int)pos.y, 0, 0, (int)mImage->GetWidth(), (int)mImage->GetHeight(), Gdiplus::UnitPixel);
 	}
 
 	void CTitleObject::Release()

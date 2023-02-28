@@ -149,6 +149,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CAnimation.h" />
+    <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CApplication.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Component.h" />
@@ -175,6 +177,8 @@
     <ClInclude Include="CTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CAnimation.cpp" />
+    <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CApplication.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="CResource.cpp" />

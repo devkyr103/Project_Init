@@ -4,11 +4,11 @@
 #include "CInput.h"
 #include "CResources.h"
 #include "CTransform.h"
+#include "CAnimator.h"
 
 namespace kyr
 {
 	CPlayableObject::CPlayableObject()
-		:mImage{}
 	{
 	}
 
@@ -18,7 +18,8 @@ namespace kyr
 
 	void CPlayableObject::Initialize()
 	{
-		mImage = CResources::Load<CImage>(L"PlayableObject", L"..\\Resources\\spr_car_1.png");
+		CImage* mImage = CResources::Load<CImage>(L"PlayableObject", L"..\\Resources\\spr_car_1.png");
+		CAnimator* animator = AddComponent<CAnimator>();
 
 		CGameObject::Initialize();
 	}
@@ -29,6 +30,8 @@ namespace kyr
 
 		CTransform* tr = GetComponent<CTransform>();
 		Vector2 pos = tr->GetPos();
+
+		CAnimator* animator = GetComponent<CAnimator>();
 
 		if (CInput::GetKeyState(eKeyCode::A) == eKeyState::Pressed)
 		{
@@ -45,6 +48,16 @@ namespace kyr
 			pos.y -= 100.0f * CTime::GetDeltaTime();
 		}
 
+		// 키 입력 따른 애니메이션 출력 설정
+		if (CInput::GetKeyState(eKeyCode::W) == eKeyState::Down)
+		{
+			//animator->Play(L"FowardRun", true);
+		}
+		if (CInput::GetKeyState(eKeyCode::W) == eKeyState::Up)
+		{
+			//animator->Play(L"Idle", true);
+		}
+
 		if (CInput::GetKeyState(eKeyCode::S) == eKeyState::Pressed)
 		{
 			pos.y += 100.0f * CTime::GetDeltaTime();
@@ -55,9 +68,9 @@ namespace kyr
 	void CPlayableObject::Render(Gdiplus::Graphics* gp)
 	{
 		CGameObject::Render(gp);
-		CTransform* tr = GetComponent<CTransform>();
-		Vector2 pos = tr->GetPos();
-		gp->DrawImage(mImage->GetImage(), (int)pos.x, (int)pos.y, 0, 0, (int)mImage->GetWidth(), (int)mImage->GetHeight(), Gdiplus::UnitPixel);
+		//CTransform* tr = GetComponent<CTransform>();
+		//Vector2 pos = tr->GetPos();
+		//gp->DrawImage(mImage->GetImage(), (int)pos.x, (int)pos.y, 0, 0, (int)mImage->GetWidth(), (int)mImage->GetHeight(), Gdiplus::UnitPixel);
 	}
 
 	void CPlayableObject::Release()

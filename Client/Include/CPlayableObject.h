@@ -17,7 +17,7 @@ namespace kyr
 		virtual void Release() override;
 
 	private:
-		CImage* mImage;
+
 	};
 }
 

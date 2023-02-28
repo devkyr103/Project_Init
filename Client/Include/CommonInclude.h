@@ -13,6 +13,7 @@
 #include <list>
 #include <vector>
 #include <map>
+#include <functional>
 
 // GDI+
 #pragma comment(lib, "gdiplus.lib")
