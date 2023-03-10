@@ -150,10 +150,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CApplication.h" />
+    <ClInclude Include="CBackObject.h" />
+    <ClInclude Include="CEnvyScene.h" />
+    <ClInclude Include="CGluttonyScene.h" />
+    <ClInclude Include="CGreedScene.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="CLustScene.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="CPrideScene.h" />
     <ClInclude Include="CResource.h" />
+    <ClInclude Include="CSlothScene.h" />
+    <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTitleObject.h" />
+    <ClInclude Include="CTruthScene.h" />
+    <ClInclude Include="CWrathScene.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="CEntity.h" />
     <ClInclude Include="Enums.h" />
@@ -176,7 +186,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CApplication.cpp" />
+    <ClCompile Include="CBackObject.cpp" />
+    <ClCompile Include="CEnvyScene.cpp" />
+    <ClCompile Include="CGluttonyScene.cpp" />
+    <ClCompile Include="CGreedScene.cpp" />
+    <ClCompile Include="CLustScene.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="CPrideScene.cpp" />
     <ClCompile Include="CResource.cpp" />
     <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="CGameObject.cpp" />
@@ -189,8 +205,12 @@
     <ClCompile Include="CResources.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="CSlothScene.cpp" />
+    <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTime.cpp" />
     <ClCompile Include="CTitleObject.cpp" />
+    <ClCompile Include="CTruthScene.cpp" />
+    <ClCompile Include="CWrathScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CTitleScene.cpp" />
     <ClCompile Include="CTransform.cpp" />
