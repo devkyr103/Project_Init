@@ -170,7 +170,7 @@ namespace kyr
 
     void CApplication::Render()
     {
-        mBackGp->FillRectangle(mBrush[(int)eColorType::Blue], 0, 0, 1600, 900);
+        mBackGp->FillRectangle(mBrush[(int)eColorType::Blue], 0, 0, mWidth, mHeight);
         CTime::Render();
         CInput::Render(mBackGp);
         CSceneManager::Render(mBackGp);

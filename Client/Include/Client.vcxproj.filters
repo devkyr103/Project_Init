@@ -52,6 +52,18 @@
     <Filter Include="Contents\Scene">
       <UniqueIdentifier>{b188a7f8-0a1a-4282-b7b7-24c26934646e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\Animator">
+      <UniqueIdentifier>{57ae8b1f-244a-4295-b58e-9b4b347c15d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Transform">
+      <UniqueIdentifier>{e04e49c3-5c26-452d-837c-42bfda6bff1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Collider">
+      <UniqueIdentifier>{8ce9d5b2-f0d1-4d1f-8766-82c35ea8ca98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\RigidBody">
+      <UniqueIdentifier>{42956c85-0c36-49b1-be63-da34f46feed8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -76,9 +88,6 @@
       <Filter>Engine\Common</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="CTransform.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
     <ClInclude Include="CMath.h">
@@ -126,6 +135,18 @@
     <ClInclude Include="CTitleObject.h">
       <Filter>Contents\Player</Filter>
     </ClInclude>
+    <ClInclude Include="CTransform.h">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="GdiplusHelperfucntions.h">
+      <Filter>main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -141,9 +162,6 @@
       <Filter>Engine\Common</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>Engine\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="CTransform.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
     <ClCompile Include="CMath.cpp">
@@ -184,6 +202,15 @@
     </ClCompile>
     <ClCompile Include="CTitleObject.cpp">
       <Filter>Contents\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CTransform.cpp">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>Engine\Component\Animator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

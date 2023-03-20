@@ -4,6 +4,7 @@
 
 namespace kyr
 {
+    class CAnimator;
     class CTitleObject :
         public CGameObject
     {
@@ -17,7 +18,7 @@ namespace kyr
         virtual void Release() override;
 
     private:
-        CImage* mImage;
+        CAnimator* mAnimator{};
     };
 
 }

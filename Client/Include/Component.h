@@ -3,6 +3,7 @@
 
 namespace kyr
 {
+	class CGameObject;
 	class Component
 		: public CEntity
 	{
@@ -16,9 +17,12 @@ namespace kyr
 		virtual void Release();
 
 		eComponentType GetType() { return mType; }
+		void SetOwner(CGameObject* owner) { mOwner = owner; }
+		CGameObject* GetOwner() { return mOwner; }
 
 	private:
-		const eComponentType mType;
+		const eComponentType mType{};
+		CGameObject* mOwner{};
 	};
 }
 

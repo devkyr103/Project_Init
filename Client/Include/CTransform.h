@@ -16,13 +16,16 @@ namespace kyr
 		virtual void Release() override;
 
 		void SetPos(Vector2 pos) { mPos = pos; }
-		void SetSize(Vector2 size) { mSize = size; }
+		void SetScale(Vector2 size) { mScale = size; }
+		void SetPivot(Vector2 pivot) { mPivot = pivot; }
 		Vector2 GetPos() { return mPos; }
-		Vector2 GetSize() { return mSize; }
+		Vector2 GetScale() { return mScale; }
+		Vector2 GetPivot() { return mPivot; }
 		
 	private:
-		Vector2 mPos;
-		Vector2 mSize;
+		Vector2 mPos{Vector2::Zero};
+		Vector2 mScale{Vector2::One};
+		Vector2 mPivot{};
 	};
 }
 

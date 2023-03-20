@@ -1,9 +1,15 @@
 #pragma once
 
 #include <math.h>
+#define PI 3.141592
 
 struct Vector2
 {
+	//static Vector2 Up;
+	//static Vector2 Right;
+	static Vector2 One;
+	static Vector2 Zero;
+
 	float x, y;
 
 	Vector2()
