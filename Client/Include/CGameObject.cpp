@@ -55,4 +55,16 @@ namespace kyr
 	{
 	}
 
+	void CGameObject::OnCollisionEnter(Collider* other)
+	{
+	}
+
+	void CGameObject::OnCollisionStay(Collider* other)
+	{
+	}
+
+	void CGameObject::OnCollisionExit(Collider* other)
+	{
+	}
+
 }

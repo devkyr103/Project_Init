@@ -53,4 +53,9 @@ namespace kyr
 		mLayers[(UINT)layer].AddGameObject(obj);
 	}
 
+	std::vector<CGameObject*>& CScene::GetGameObjects(eLayerType layer)
+	{
+		return mLayers[(UINT)layer].GetGameObjects();
+	}
+
 }

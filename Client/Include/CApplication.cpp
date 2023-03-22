@@ -4,6 +4,7 @@
 #include "CInput.h"
 #include "CSceneManager.h"
 #include "CResources.h"
+#include "CollisionManager.h"
 
 
 namespace kyr
@@ -17,8 +18,6 @@ namespace kyr
         , mHWnd{}
         , gdiplusToken{}
         , mBackGp{}
-        , mBrush{}
-        , mPen{}
         , mWidth{}
         , mHeight{}
         , mHDC{}
@@ -93,17 +92,17 @@ namespace kyr
         // 그래픽스에 백버퍼 비트맵을 지정해준다.
         //mBackGp = Gdiplus::Graphics::FromImage(mBackBmp);
 
-        mBrush[(int)eColorType::Red] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 0, 0));
-        mBrush[(int)eColorType::Green] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 255, 0));
-        mBrush[(int)eColorType::Black] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 0));
-        mBrush[(int)eColorType::Blue] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 255));
-        mBrush[(int)eColorType::Yellow] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 255, 0));
+        CPaintTool::mBrush[(int)eColorType::Red] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 0, 0));
+        CPaintTool::mBrush[(int)eColorType::Green] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 255, 0));
+        CPaintTool::mBrush[(int)eColorType::Black] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 0));
+        CPaintTool::mBrush[(int)eColorType::Blue] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 255));
+        CPaintTool::mBrush[(int)eColorType::Yellow] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 255, 0));
 
-        mPen[(int)eColorType::Red] = new Gdiplus::Pen(Gdiplus::Color(255, 0, 0));
-        mPen[(int)eColorType::Green] = new Gdiplus::Pen(Gdiplus::Color(0, 255, 0));
-        mPen[(int)eColorType::Black] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 0));
-        mPen[(int)eColorType::Blue] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 255));
-        mPen[(int)eColorType::Yellow] = new Gdiplus::Pen(Gdiplus::Color(255, 255, 0));
+        CPaintTool::mPen[(int)eColorType::Red] = new Gdiplus::Pen(Gdiplus::Color(255, 0, 0));
+        CPaintTool::mPen[(int)eColorType::Green] = new Gdiplus::Pen(Gdiplus::Color(0, 255, 0));
+        CPaintTool::mPen[(int)eColorType::Black] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 0));
+        CPaintTool::mPen[(int)eColorType::Blue] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 255));
+        CPaintTool::mPen[(int)eColorType::Yellow] = new Gdiplus::Pen(Gdiplus::Color(255, 255, 0));
 
         // Initialize
         CTime::Initialize();
@@ -155,6 +154,7 @@ namespace kyr
         CTime::Update();
         CInput::Update();
         CSceneManager::Update();
+        CollisionManager::Update();
 
         return true;
     }
@@ -170,7 +170,7 @@ namespace kyr
 
     void CApplication::Render()
     {
-        mBackGp->FillRectangle(mBrush[(int)eColorType::Blue], 0, 0, mWidth, mHeight);
+        mBackGp->FillRectangle(CPaintTool::mBrush[(int)eColorType::Blue], 0, 0, mWidth, mHeight);
         CTime::Render();
         CInput::Render(mBackGp);
         CSceneManager::Render(mBackGp);

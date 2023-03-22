@@ -1,6 +1,7 @@
 #include "CSceneManager.h"
 #include "CTitleScene.h"
 #include "CPlayScene.h"
+#include "CollisionManager.h"
 
 namespace kyr
 {
@@ -14,8 +15,6 @@ namespace kyr
 		mScenes[(UINT)eSceneType::Title] = new CTitleScene();
 		mScenes[(UINT)eSceneType::Play] = new CPlayeScene();
 
-		mActiveScene = mScenes[(UINT)eSceneType::Play];
-
 		for (CScene* scene : mScenes)
 		{
 			if (scene == nullptr)
@@ -23,6 +22,11 @@ namespace kyr
 
 			scene->Initialize();
 		}
+
+
+		//mActiveScene = mScenes[(UINT)eSceneType::Play];
+
+		LoadScene(eSceneType::Play);
 	}
 
 	void CSceneManager::Update()
@@ -49,7 +53,10 @@ namespace kyr
 
 	void CSceneManager::LoadScene(eSceneType type)
 	{
-		mActiveScene->OnExit();
+		if(mActiveScene)
+			mActiveScene->OnExit();
+
+		CollisionManager::Clear();
 
 		mActiveScene = mScenes[(UINT)type];
 		mActiveScene->OnEnter();

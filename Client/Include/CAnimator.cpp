@@ -17,6 +17,11 @@ namespace kyr
 			animation.second = nullptr;
 		}
 
+		for (auto& events : mEvents)
+		{
+			SAFE_DELETE(events.second);
+		}
+
 	}
 
 	void CAnimator::Initialize()
@@ -31,8 +36,16 @@ namespace kyr
 
 			if (mbLoop && mActiveAnimation->IsComplete())
 			{
+				CAnimator::Events* events = FindEvents(mActiveAnimation->GetName());
+
+				if (events != nullptr)
+					events->mCompleteEvent();
+
 				mActiveAnimation->Reset();
 			}
+
+			if (mbLoop && mActiveAnimation->IsComplete())
+				mActiveAnimation->Reset();
 		}
 	}
 
@@ -61,6 +74,8 @@ namespace kyr
 		animation->SetAnimator(this);
 
 		mAnimations.insert(std::make_pair(name, animation));
+		Events* event = new Events();
+		mEvents.insert(std::make_pair(name, event));
 	}
 
 	void CAnimator::CreateAnimations(const std::wstring& path, Vector2 offset, float duration)
@@ -139,28 +154,61 @@ namespace kyr
 
 	void CAnimator::play(const std::wstring& name, bool loop)
 	{
+		if (mActiveAnimation != nullptr)
+		{
+			CAnimator::Events* prevEvents
+				= FindEvents(mActiveAnimation->GetName());
+
+			if (prevEvents != nullptr)
+				prevEvents->mEndEvent();
+		}
+
 		mActiveAnimation = FindAnimation(name);
+		mActiveAnimation->Reset();
 		mbLoop = loop;
+
+		CAnimator::Events* events
+			= FindEvents(mActiveAnimation->GetName());
+
+		if (events != nullptr)
+			events->mStartEvent();
 	}
 
 	CAnimator::Events* CAnimator::FindEvents(const std::wstring& name)
 	{
-		return nullptr;
+		std::map<std::wstring, Events*>::iterator iter = mEvents.find(name);
+
+		if (iter == mEvents.end())
+			return nullptr;
+
+		return iter->second;
 	}
 
-	//std::function<void()>& CAnimator::GetStartEvent(const std::wstring& name)
-	//{
-	//	// // O: 여기에 return 문을 삽입합니다.
-	//}
+	std::function<void()>& CAnimator::GetStartEvent(const std::wstring& name)
+	{
+		CAnimation* animation = FindAnimation(name);
 
-	//std::function<void()>& CAnimator::GetCompleteEvent(const std::wstring& name)
-	//{
-	//	// // O: 여기에 return 문을 삽입합니다.
-	//}
+		CAnimator::Events* events = FindEvents(animation->GetName());
 
-	//std::function<void()>& CAnimator::GetEndEvent(const std::wstring& name)
-	//{
-	//	// // O: 여기에 return 문을 삽입합니다.
-	//}
+		return events->mStartEvent.mEvent;
+	}
+
+	std::function<void()>& CAnimator::GetCompleteEvent(const std::wstring& name)
+	{
+		CAnimation* animation = FindAnimation(name);
+
+		CAnimator::Events* events = FindEvents(animation->GetName());
+
+		return events->mCompleteEvent.mEvent;
+	}
+
+	std::function<void()>& CAnimator::GetEndEvent(const std::wstring& name)
+	{
+		CAnimation* animation = FindAnimation(name);
+
+		CAnimator::Events* events = FindEvents(animation->GetName());
+
+		return events->mEndEvent.mEvent;
+	}
 
 }

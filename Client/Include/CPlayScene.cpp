@@ -1,7 +1,9 @@
 #include "CPlayScene.h"
 #include "CPlayableObject.h"
+#include "CTitleObject.h"
 #include "CInput.h"
 #include "CSceneManager.h"
+#include "CollisionManager.h"
 
 namespace kyr
 {
@@ -19,6 +21,9 @@ namespace kyr
 
 		mPlayableObject = new CPlayableObject();
 		AddGameObject(mPlayableObject, eLayerType::Player);
+
+		CTitleObject* obj = new CTitleObject();
+		AddGameObject(obj, eLayerType::Monster);
 
 		CScene::Initialize();
 	}
@@ -43,11 +48,14 @@ namespace kyr
 	{
 		CScene::Release();
 	}
+
 	void CPlayeScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 	}
+
 	void CPlayeScene::OnExit()
 	{
-		//mCuphead->SetPos(Vector2{ 0.0f, 0.0f });
+		
 	}
 }

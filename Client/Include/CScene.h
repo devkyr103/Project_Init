@@ -21,6 +21,8 @@ namespace kyr
 
 		void AddGameObject(CGameObject* obj, eLayerType layer);
 
+		std::vector<CGameObject*>& GetGameObjects(eLayerType layer);
+
 	private:
 		std::vector<CLayer> mLayers;
 	};

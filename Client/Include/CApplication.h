@@ -41,9 +41,6 @@ namespace kyr
 		ULONG_PTR	gdiplusToken;			// GDI+ 토큰
 		Gdiplus::Graphics* mBackGp;			// 백 그래픽스
 
-		Gdiplus::SolidBrush* mBrush[(int)eColorType::Max];
-		Gdiplus::Pen* mPen[(int)eColorType::Max];
-
 		UINT	mWidth;
 		UINT	mHeight;
 

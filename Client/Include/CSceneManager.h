@@ -12,6 +12,7 @@ namespace kyr
 		static void Release();
 
 		static void LoadScene(eSceneType type);
+		static CScene* GetActiveScene() { return mActiveScene; }
 
 	private:
 		static std::vector<CScene*> mScenes;

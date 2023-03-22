@@ -5,6 +5,7 @@
 #include "CResources.h"
 #include "CTransform.h"
 #include "CAnimator.h"
+#include "Collider.h"
 
 namespace kyr
 {
@@ -27,7 +28,8 @@ namespace kyr
 
 		mAnimator->play(L"Resourcesgirl", true);
 		
-		
+		Collider* col = AddComponent<Collider>();
+		col->SetSize(Vector2(100.f, 100.f));
 
 		CGameObject::Initialize();
 	}
@@ -39,25 +41,25 @@ namespace kyr
 		CTransform* tr = GetComponent<CTransform>();
 		Vector2 pos = tr->GetPos();
 
-		if (CInput::GetKeyState(eKeyCode::A) == eKeyState::Pressed)
-		{
-			pos.x -= 100.0f * CTime::GetDeltaTime();
-		}
-
-		if (CInput::GetKeyState(eKeyCode::D) == eKeyState::Pressed)
-		{
-			pos.x += 100.0f * CTime::GetDeltaTime();
-		}
-
-		if (CInput::GetKeyState(eKeyCode::W) == eKeyState::Pressed)
-		{
-			pos.y -= 100.0f * CTime::GetDeltaTime();
-		}
-
-		if (CInput::GetKeyState(eKeyCode::S) == eKeyState::Pressed)
-		{
-			pos.y += 100.0f * CTime::GetDeltaTime();
-		}
+		//if (CInput::GetKeyState(eKeyCode::A) == eKeyState::Pressed)
+		//{
+		//	pos.x -= 100.0f * CTime::GetDeltaTime();
+		//}
+		//
+		//if (CInput::GetKeyState(eKeyCode::D) == eKeyState::Pressed)
+		//{
+		//	pos.x += 100.0f * CTime::GetDeltaTime();
+		//}
+		//
+		//if (CInput::GetKeyState(eKeyCode::W) == eKeyState::Pressed)
+		//{
+		//	pos.y -= 100.0f * CTime::GetDeltaTime();
+		//}
+		//
+		//if (CInput::GetKeyState(eKeyCode::S) == eKeyState::Pressed)
+		//{
+		//	pos.y += 100.0f * CTime::GetDeltaTime();
+		//}
 		tr->SetPos(pos);
 	}
 

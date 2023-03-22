@@ -17,6 +17,7 @@ namespace kyr
 		virtual void Release();
 
 		void AddGameObject(CGameObject* gameObj);
+		std::vector<CGameObject*>& GetGameObjects() { return mGameObjects; }
 
 	private:
 		std::vector<CGameObject*> mGameObjects;

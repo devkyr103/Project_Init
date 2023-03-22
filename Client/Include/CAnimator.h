@@ -41,29 +41,30 @@ namespace kyr
 		virtual void Render(Gdiplus::Graphics* gp) override;
 		virtual void Release() override;
 
-		// Sprite Sheet
+		// Sprite Sheet를 지정하여 Animation 생성
 		void CreateAnimation(const std::wstring& name
 			, CImage* sheet
 			, Vector2 leftTop
 			, UINT column, UINT row, UINT spriteLength
 			, Vector2 offset, float duration);
 
-		// Sprites
+		// 개별 Sprite로 SpriteSheet 생성하고 CreateAnimation() 호출
 		void CreateAnimations(const std::wstring& path, Vector2 offset, float duration);
 
 		CAnimation* FindAnimation(const std::wstring& name);
 		void play(const std::wstring& name, bool loop);
 
 		Events* FindEvents(const std::wstring& name);
-		//std::function<void()>& getstartevent(const std::wstring& name);
-		//std::function<void()>& getcompleteevent(const std::wstring& name);
-		//std::function<void()>& getendevent(const std::wstring& name);
+
+		std::function<void()>& GetStartEvent(const std::wstring& name);
+		std::function<void()>& GetCompleteEvent(const std::wstring& name);
+		std::function<void()>& GetEndEvent(const std::wstring& name);
 
 	private:
-		std::map<std::wstring, CAnimation*> mAnimations;
-		std::map<std::wstring, Events*> mEvents;
+		std::map<std::wstring, CAnimation*> mAnimations{};
+		std::map<std::wstring, Events*> mEvents{};
+
 		CAnimation* mActiveAnimation{};
-		//CImage* mSpriteSheet{};
 		bool mbLoop{};
 	};
 
