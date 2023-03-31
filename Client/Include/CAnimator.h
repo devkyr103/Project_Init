@@ -60,6 +60,8 @@ namespace kyr
 		std::function<void()>& GetCompleteEvent(const std::wstring& name);
 		std::function<void()>& GetEndEvent(const std::wstring& name);
 
+		bool IsComplete() { return mActiveAnimation->IsComplete(); }
+
 	private:
 		std::map<std::wstring, CAnimation*> mAnimations{};
 		std::map<std::wstring, Events*> mEvents{};

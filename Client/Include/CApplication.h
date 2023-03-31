@@ -25,24 +25,37 @@ namespace kyr
 		void Render();
 
 	public:
-		HWND GetHWnd() { return mHWnd; }
 		HDC GetHDC() { return mHDC; }
 
-	private:
-		HINSTANCE	mHInst;					// 프로그램 인스턴스 핸들
-		HWND		mHWnd;					// 윈도우 인스턴스 핸들
+		static HWND GetHWnd() { return mHWnd; }
 
+
+		static UINT GetClientWidth() { return mWidth; }
+		static UINT GetClientHeight() { return mHeight; }
+
+
+
+	private:
+		static HWND		mHWnd;				// 윈도우 인스턴스 핸들
+		HINSTANCE	mHInst{};				// 프로그램 인스턴스 핸들
+
+	private:
 		// GDI
-		HDC			mHDC;					
-		HBITMAP		mBackBuffer;			
-		HDC			mBackHDC;
+		HDC			mHDC{};
+		HBITMAP		mBackBuffer{};
+		HDC			mBackHDC{};
 
 		// GDI+
-		ULONG_PTR	gdiplusToken;			// GDI+ 토큰
-		Gdiplus::Graphics* mBackGp;			// 백 그래픽스
+		ULONG_PTR	gdiplusToken{};			// GDI+ 토큰
+		Gdiplus::Graphics* mBackGp{};		// 백 그래픽스
 
-		UINT	mWidth;
-		UINT	mHeight;
+		// Buff Size
+		static UINT	mWidth;
+		static UINT	mHeight;
+
+		// Client Rect
+		static RECT mRect;
+
 
 		static bool m_Loop;			// 프로그램 종료에 사용됨(WndProc)
 

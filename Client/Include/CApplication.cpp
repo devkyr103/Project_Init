@@ -4,230 +4,273 @@
 #include "CInput.h"
 #include "CSceneManager.h"
 #include "CResources.h"
-#include "CollisionManager.h"
+#include "CCollisionManager.h"
+#include "CCamera.h"
 
 
 namespace kyr
 {
-    DEFINITION_SINGLE(CApplication);
+	DEFINITION_SINGLE(CApplication);
 
-    bool CApplication::m_Loop = true;
+	bool CApplication::m_Loop = true;
+	HWND CApplication::mHWnd{};
+	UINT CApplication::mWidth{};
+	UINT CApplication::mHeight{};
+	RECT CApplication::mRect{};
 
-    CApplication::CApplication()
-        : mHInst{}
-        , mHWnd{}
-        , gdiplusToken{}
-        , mBackGp{}
-        , mWidth{}
-        , mHeight{}
-        , mHDC{}
-        , mBackBuffer{}
-        , mBackHDC{}
-    {
-        _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-        //_CrtSetBreakAlloc();
-    }
 
-    CApplication::~CApplication()
-    {
+	CApplication::CApplication()
+	{
+		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+		//_CrtSetBreakAlloc();
+	}
 
-        Gdiplus::GdiplusShutdown(gdiplusToken);
-    }
+	CApplication::~CApplication()
+	{
+		Gdiplus::GdiplusShutdown(gdiplusToken);
+	}
 
-    bool CApplication::Init(HINSTANCE hInst)
-    {
-        mHInst = hInst;
-        
-        // 윈도우 등록 및 생성
-        Register();
+	bool CApplication::Init(HINSTANCE hInst)
+	{
+		mHInst = hInst;
 
-        if (!Create())
-            return false;
+		// 윈도우 사이즈
+		mWidth = mRect.right = 1600;
+		mHeight = mRect.bottom = 900;
 
-        //mWidth = GetSystemMetrics(SM_CXSCREEN);
-        //mHeight = GetSystemMetrics(SM_CYSCREEN);
+		// 윈도우 등록 및 생성
+		Register();
 
-        mWidth = 1600;
-        mHeight = 900;
-        //
-        ////// rect를 실제 클라이언트 크기로 설정
-        //RECT rect{ 0, 0, (LONG)mWidth, (LONG)mHeight };
-        ////AdjustWindowRect(&rect, WS_POPUP, false);
-        //
-        //MoveWindow(mHWnd, 0, 0, rect.right - rect.left, rect.bottom - rect.top, TRUE);
-        ////SetWindowPos(mHWnd, nullptr, 0, 0, rect.right - rect.left, rect.bottom - rect.top, 0);
-        //
-        //ShowWindow(mHWnd, TRUE);
+		if (!Create())
+			return false;
 
-        // GDIplusStartup 함수 인자로 사용됨, GDI+ 버전, 
-        // 디버그 콜백 함수 등 정보를 담고있음(생성시 초기화됨)
-        Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+		//mWidth = GetSystemMetrics(SM_CXSCREEN);
+		//mHeight = GetSystemMetrics(SM_CYSCREEN);
 
-        // GDI+ Initialize
-        Gdiplus::Status result = Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
-        // GDI+ 초기화 확인
-        if (result != Gdiplus::Ok)
-        {
-            OutputDebugString(L"ERROR: GDI+ Initialize Failed");
+		// rect를 실제 클라이언트 크기로 설정
+		RECT rect{ 0, 0, (LONG)mWidth, (LONG)mHeight };
+		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
-            return false;
-        }
+		//MoveWindow(mHWnd, 0, 0, rect.right - rect.left, rect.bottom - rect.top, TRUE);
+		SetWindowPos(mHWnd, nullptr, 0, 0, rect.right - rect.left, rect.bottom - rect.top, 0);
 
-        mHDC = GetDC(mHWnd);
-        mBackBuffer = CreateCompatibleBitmap(mHDC, mWidth, mHeight);
-        mBackHDC = CreateCompatibleDC(mHDC);
+		ShowWindow(mHWnd, TRUE);
 
-        HBITMAP defaultBitmap = (HBITMAP)SelectObject(mBackHDC, mBackBuffer);
-        DeleteObject(defaultBitmap);
+		GetClientRect(mHWnd, &rect);
 
-        mBackGp = new Gdiplus::Graphics(mBackHDC);
+		// GDIplusStartup 함수 인자로 사용됨, GDI+ 버전, 
+		// 디버그 콜백 함수 등 정보를 담고있음(생성시 초기화됨)
+		Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 
-        // 특정 윈도우 핸들에서 DC(Deivce Context) 핸들을 얻어온다.
-        //mFrontGp = Gdiplus::Graphics::FromHWND(mHWnd);
+		// GDI+ Initialize
+		Gdiplus::Status result = Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
-        // 백버퍼용 비트맵(비트맵 사이즈를 우선 정사이즈로 설정한다.)
-        //mBackBmp = new Gdiplus::Bitmap(mWidth, mHeight);
+		// GDI+ 초기화 확인
+		if (result != Gdiplus::Ok)
+		{
+			OutputDebugString(L"ERROR: GDI+ Initialize Failed");
 
-        // 그래픽스에 백버퍼 비트맵을 지정해준다.
-        //mBackGp = Gdiplus::Graphics::FromImage(mBackBmp);
+			return false;
+		}
 
-        CPaintTool::mBrush[(int)eColorType::Red] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 0, 0));
-        CPaintTool::mBrush[(int)eColorType::Green] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 255, 0));
-        CPaintTool::mBrush[(int)eColorType::Black] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 0));
-        CPaintTool::mBrush[(int)eColorType::Blue] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 255));
-        CPaintTool::mBrush[(int)eColorType::Yellow] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 255, 0));
+		mHDC = GetDC(mHWnd);
+		mBackBuffer = CreateCompatibleBitmap(mHDC, mWidth, mHeight);
+		mBackHDC = CreateCompatibleDC(mHDC);
 
-        CPaintTool::mPen[(int)eColorType::Red] = new Gdiplus::Pen(Gdiplus::Color(255, 0, 0));
-        CPaintTool::mPen[(int)eColorType::Green] = new Gdiplus::Pen(Gdiplus::Color(0, 255, 0));
-        CPaintTool::mPen[(int)eColorType::Black] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 0));
-        CPaintTool::mPen[(int)eColorType::Blue] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 255));
-        CPaintTool::mPen[(int)eColorType::Yellow] = new Gdiplus::Pen(Gdiplus::Color(255, 255, 0));
+		HBITMAP defaultBitmap = (HBITMAP)SelectObject(mBackHDC, mBackBuffer);
+		DeleteObject(defaultBitmap);
 
-        // Initialize
-        CTime::Initialize();
-        CInput::Initialize();
-        CSceneManager::Initialize();
+		mBackGp = new Gdiplus::Graphics(mBackHDC);
 
-        return true;
-    }
+		// 특정 윈도우 핸들에서 DC(Deivce Context) 핸들을 얻어온다.
+		//mFrontGp = Gdiplus::Graphics::FromHWND(mHWnd);
 
-    int CApplication::Run()
-    {
-        MSG msg{};
+		// 백버퍼용 비트맵(비트맵 사이즈를 우선 정사이즈로 설정한다.)
+		//mBackBmp = new Gdiplus::Bitmap(mWidth, mHeight);
 
-        while (m_Loop)
-        {
-            if (PeekMessage(&msg, mHWnd, 0, 0, PM_REMOVE))
-            {
-                TranslateMessage(&msg);
-                DispatchMessage(&msg);
-            }
-            else
-            {
-                Logic();
-            }
-        }
+		// 그래픽스에 백버퍼 비트맵을 지정해준다.
+		//mBackGp = Gdiplus::Graphics::FromImage(mBackBmp);
 
-        CSceneManager::Release();
-        CResources::Release();
+		CPaintTool::mBrush[(int)eColorType::Red] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 0, 0));
+		CPaintTool::mBrush[(int)eColorType::Green] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 255, 0));
+		CPaintTool::mBrush[(int)eColorType::Black] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 0));
+		CPaintTool::mBrush[(int)eColorType::Blue] = new Gdiplus::SolidBrush(Gdiplus::Color(0, 0, 255));
+		CPaintTool::mBrush[(int)eColorType::Yellow] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 255, 0));
+		CPaintTool::mBrush[(int)eColorType::White] = new Gdiplus::SolidBrush(Gdiplus::Color(255, 255, 255));
 
-        return (int)msg.wParam;
-    }
+		CPaintTool::mPen[(int)eColorType::Red] = new Gdiplus::Pen(Gdiplus::Color(255, 0, 0));
+		CPaintTool::mPen[(int)eColorType::Green] = new Gdiplus::Pen(Gdiplus::Color(0, 255, 0));
+		CPaintTool::mPen[(int)eColorType::Black] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 0));
+		CPaintTool::mPen[(int)eColorType::Blue] = new Gdiplus::Pen(Gdiplus::Color(0, 0, 255));
+		CPaintTool::mPen[(int)eColorType::Yellow] = new Gdiplus::Pen(Gdiplus::Color(255, 255, 0));
+		CPaintTool::mPen[(int)eColorType::White] = new Gdiplus::Pen(Gdiplus::Color(255, 255, 255));
 
-    void CApplication::Logic()
-    {
-        Input();
-        Update();
-        PostUpdate();
-        Collision();
-        Render();
-    }
+		// Initialize
+		CTime::Initialize();
+		CInput::Initialize();
+		CSceneManager::Initialize();
+		CCamera::Initialize();
 
-    void CApplication::Input()
-    {
+		return true;
+	}
 
-    }
+	int CApplication::Run()
+	{
+		MSG msg{};
 
-    bool CApplication::Update()
-    {
-        CTime::Update();
-        CInput::Update();
-        CSceneManager::Update();
-        CollisionManager::Update();
+		while (m_Loop)
+		{
+			if (PeekMessage(&msg, mHWnd, 0, 0, PM_REMOVE))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+			else
+			{
+				Logic();
+			}
+		}
 
-        return true;
-    }
+		CSceneManager::Release();
+		CResources::Release();
 
-    bool CApplication::PostUpdate()
-    {
-        return true;
-    }
+		return (int)msg.wParam;
+	}
 
-    void CApplication::Collision()
-    {
-    }
+	void CApplication::Logic()
+	{
+		Input();
+		Update();
+		PostUpdate();
+		Collision();
+		Render();
+	}
 
-    void CApplication::Render()
-    {
-        mBackGp->FillRectangle(CPaintTool::mBrush[(int)eColorType::Blue], 0, 0, mWidth, mHeight);
-        CTime::Render();
-        CInput::Render(mBackGp);
-        CSceneManager::Render(mBackGp);
+	void CApplication::Input()
+	{
 
-        BitBlt(mHDC, 0, 0, mWidth, mHeight, mBackHDC, 0, 0, SRCCOPY);
-    }
+	}
 
-    void CApplication::Register()
-    {
-        WNDCLASSEXW wcex{};
+	bool CApplication::Update()
+	{
+		CTime::Update();
+		CInput::Update();
+		CCamera::Update();
 
-        wcex.cbSize = sizeof(WNDCLASSEXW);
+		CSceneManager::Update();
+		CCollisionManager::Update();
 
-        wcex.style = CS_HREDRAW | CS_VREDRAW;
-        wcex.lpfnWndProc = WndProc;
-        wcex.cbClsExtra = 0;
-        wcex.cbWndExtra = 0;
-        wcex.hInstance = mHInst;
-        wcex.hIcon = LoadIcon(mHInst, MAKEINTRESOURCE(IDI_CLIENT));
-        wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-        wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-        wcex.lpszMenuName = nullptr;
-        wcex.lpszClassName = TEXT("Init()");
-        wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+		return true;
+	}
 
-        RegisterClassExW(&wcex);
-    }
+	bool CApplication::PostUpdate()
+	{
+		return true;
+	}
 
-    bool CApplication::Create()
-    {
-        mHWnd = CreateWindowW(TEXT("Init()"), TEXT("Init()"), WS_OVERLAPPEDWINDOW,
-            CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, mHInst, nullptr);
+	void CApplication::Collision()
+	{
+	}
 
-        if (!mHWnd)
-        {
-            return FALSE;
-        }
+	void CApplication::Render()
+	{
+		mBackGp->FillRectangle(CPaintTool::mBrush[(int)eColorType::Black], 0, 0, mWidth, mHeight);
+		CTime::Render();
+		CInput::Render(mBackGp);
+		mBackGp->SetClip(CCamera::GetPath());
+		CSceneManager::Render(mBackGp);
+		CCamera::Render(mBackGp);
 
-        ShowWindow(mHWnd, SW_SHOW);
-        UpdateWindow(mHWnd);
 
-        return true;
-    }
 
-    LRESULT CApplication::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-    {
-        switch (message)
-        {
-        case WM_DESTROY:
-            m_Loop = false;
-            PostQuitMessage(0);
-            break;
-        default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
-        }
+		StretchBlt(mHDC, 0, 0, mRect.right, mRect.bottom, mBackHDC, 0, 0, mWidth, mHeight, SRCCOPY);
+	}
 
-        return 0;
-    }
+	void CApplication::Register()
+	{
+		WNDCLASSEXW wcex{};
+
+		wcex.cbSize = sizeof(WNDCLASSEXW);
+		wcex.style = CS_HREDRAW | CS_VREDRAW;
+		wcex.lpfnWndProc = WndProc;
+		wcex.cbClsExtra = 0;
+		wcex.cbWndExtra = 0;
+		wcex.hInstance = mHInst;
+		wcex.hIcon = LoadIcon(mHInst, MAKEINTRESOURCE(IDI_CLIENT));
+		wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+		wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+		wcex.lpszMenuName = nullptr;
+		wcex.lpszClassName = TEXT("Init()");
+		wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+		RegisterClassExW(&wcex);
+	}
+
+	bool CApplication::Create()
+	{
+		mHWnd = CreateWindowW(TEXT("Init()"), TEXT("Init()"), WS_OVERLAPPEDWINDOW,
+			CW_USEDEFAULT, 0, mWidth, mHeight, nullptr, nullptr, mHInst, nullptr);
+
+		if (!mHWnd)
+		{
+			return FALSE;
+		}
+		
+		ShowWindow(mHWnd, SW_SHOW);
+		UpdateWindow(mHWnd);
+
+		return true;
+	}
+
+	LRESULT CApplication::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+	{
+		switch (message)
+		{
+		case WM_KEYDOWN:
+		{
+			switch (wParam)
+			{
+			case VK_F11:
+				if (IsZoomed(mHWnd))
+				{
+					RECT rect{ 0, 0, (LONG)mWidth, (LONG)mHeight };
+					AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+					SetWindowLongPtr(mHWnd, GWL_STYLE, WS_OVERLAPPEDWINDOW);
+					MoveWindow(mHWnd, 0, 0, rect.right - rect.left, rect.bottom - rect.top, TRUE);
+					ShowWindow(mHWnd, SW_SHOW);
+				}
+				else
+					SendMessage(hWnd, WM_SIZE, SIZE_MAXIMIZED, NULL);
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+		case WM_SIZE:
+		{
+			switch (wParam)
+			{
+			case SIZE_MAXIMIZED:
+				SetWindowLongPtr(mHWnd, GWL_STYLE, 0);
+				ShowWindow(mHWnd, SW_SHOWMAXIMIZED);
+				break;
+			default:
+				break;
+			}
+			GetClientRect(mHWnd, &mRect);
+		}
+		break;
+		case WM_DESTROY:
+			m_Loop = false;
+			PostQuitMessage(0);
+			break;
+		default:
+			return DefWindowProc(hWnd, message, wParam, lParam);
+		}
+
+		return 0;
+	}
 
 }

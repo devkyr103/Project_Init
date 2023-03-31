@@ -4,6 +4,7 @@
 #include "CAnimator.h"
 #include "CTransform.h"
 #include "CGameObject.h"
+#include "CCamera.h"
 
 namespace kyr
 {
@@ -51,6 +52,7 @@ namespace kyr
 			, Gdiplus::UnitPixel);*/
 
 		Vector2 pos = tr->GetPos();
+		pos = CCamera::CalcPos(pos);
 		Vector2 scale = tr->GetScale();
 		Vector2 pivot = tr->GetPivot();
 		
