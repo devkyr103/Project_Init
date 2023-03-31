@@ -3,9 +3,10 @@
 
 enum class eColorType
 {
+	White,
+	Black,
 	Red,
 	Green,
-	Black,
 	Blue,
 	Yellow,
 	Max
