@@ -11,6 +11,7 @@ namespace kyr
 		~CImage();
 
 		static CImage* Create(const std::wstring& name, UINT width, UINT height);
+		static CImage* Create(const std::wstring& name, UINT width, UINT height, COLORREF rgb);
 
 		virtual HRESULT Load(const std::wstring& path) override;
 
