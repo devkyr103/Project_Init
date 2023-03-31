@@ -1,13 +1,13 @@
-#include "CollisionManager.h"
+#include "CCollisionManager.h"
 #include "CScene.h"
 #include "CSceneManager.h"
 
 namespace kyr
 {
-	WORD CollisionManager::mMatrix[(UINT)eLayerType::End] = {};
-	std::map<UINT64, bool> CollisionManager::mCollisionMap;
+	WORD CCollisionManager::mMatrix[(UINT)eLayerType::End] = {};
+	std::map<UINT64, bool> CCollisionManager::mCollisionMap;
 
-	void CollisionManager::Update()
+	void CCollisionManager::Update()
 	{
 		CScene* scene = CSceneManager::GetActiveScene();
 
@@ -23,20 +23,20 @@ namespace kyr
 		}
 	}
 
-	void CollisionManager::LayerCollision(CScene* scene, eLayerType left, eLayerType right)
+	void CCollisionManager::LayerCollision(CScene* scene, eLayerType left, eLayerType right)
 	{
 		std::vector<CGameObject*>& lefts = scene->GetGameObjects(left);
 		std::vector<CGameObject*>& rights = scene->GetGameObjects(right);
 
 		for (auto leftObject : lefts)
 		{
-			Collider* leftCollider = leftObject->GetComponent<Collider>();
+			CCollider* leftCollider = leftObject->GetComponent<CCollider>();
 			if (leftCollider == nullptr)
 				continue;
 
 			for (auto rightObject : rights)
 			{
-				Collider* rightCollider = rightObject->GetComponent<Collider>();
+				CCollider* rightCollider = rightObject->GetComponent<CCollider>();
 				if (rightCollider == nullptr)
 					continue;
 
@@ -48,7 +48,7 @@ namespace kyr
 		}
 	}
 
-	void CollisionManager::ColliderCollision(Collider* leftCol, Collider* rightCol, eLayerType left, eLayerType right)
+	void CCollisionManager::ColliderCollision(CCollider* leftCol, CCollider* rightCol, eLayerType left, eLayerType right)
 	{
 		ColliderID colliderID = {};
 		colliderID.left = (UINT)leftCol->GetID();
@@ -95,7 +95,7 @@ namespace kyr
 		}
 	}
 
-	bool CollisionManager::Intersect(Collider* left, Collider* right)
+	bool CCollisionManager::Intersect(CCollider* left, CCollider* right)
 	{
 		Vector2 leftPos = left->GetPos();
 		Vector2 rightPos = right->GetPos();
@@ -120,7 +120,7 @@ namespace kyr
 		return false;
 	}
 
-	void CollisionManager::SetLayer(eLayerType left, eLayerType right, bool value)
+	void CCollisionManager::SetLayer(eLayerType left, eLayerType right, bool value)
 	{
 		UINT row = 0;
 		UINT col = 0;
@@ -145,7 +145,7 @@ namespace kyr
 			mMatrix[row] &= ~(1 << col);
 	}
 
-	void CollisionManager::Clear()
+	void CCollisionManager::Clear()
 	{
 		memset(mMatrix, 0, sizeof(WORD) * (UINT)eLayerType::End);
 		mCollisionMap.clear();

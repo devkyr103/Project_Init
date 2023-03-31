@@ -1,36 +1,40 @@
-#include "Collider.h"
+#include "CCollider.h"
 #include "CTransform.h"
 #include "CGameObject.h"
 #include "CPaintTool.h"
+#include "CCamera.h"
 
 namespace kyr
 {
-	UINT Collider::ColliderNumber = 0;
+	UINT CCollider::ColliderNumber = 0;
 
-	Collider::Collider()
+	CCollider::CCollider()
 		: Component(eComponentType::Collider)
 		, mID(ColliderNumber++)
 	{
 	}
 
-	Collider::~Collider()
+	CCollider::~CCollider()
 	{
 	}
 
-	void Collider::Initialize()
+	void CCollider::Initialize()
 	{
 		CTransform* tr = GetOwner()->GetComponent<CTransform>();
 		mPos = tr->GetPos();
 	}
 
-	void Collider::Update()
+	void CCollider::Update()
 	{
 		CTransform* tr = GetOwner()->GetComponent<CTransform>();
 		mPos = tr->GetPos();
 	}
 
-	void Collider::Render(Gdiplus::Graphics* gp)
+	void CCollider::Render(Gdiplus::Graphics* gp)
 	{
+		Vector2 pos = mPos;
+		pos = CCamera::CalcPos(pos);
+
 		Gdiplus::Pen* pen{};
 
 		if (mCollisionCount == 0)
@@ -38,26 +42,26 @@ namespace kyr
 		else
 			pen = CPaintTool::mPen[(int)eColorType::Red];
 
-		gp->DrawRectangle(pen, mPos.x, mPos.y, mSize.x, mSize.y);
+		gp->DrawRectangle(pen, pos.x, pos.y, mSize.x, mSize.y);
 
 	}
 
-	void Collider::Release()
+	void CCollider::Release()
 	{
 	}
 
-	void Collider::OnCollisionEnter(Collider* other)
+	void CCollider::OnCollisionEnter(CCollider* other)
 	{
 		mCollisionCount = 1;
 		GetOwner()->OnCollisionEnter(other);
 	}
 
-	void Collider::OnCollisionStay(Collider* other)
+	void CCollider::OnCollisionStay(CCollider* other)
 	{
 		GetOwner()->OnCollisionStay(other);
 	}
 
-	void Collider::OnCollisionExit(Collider* other)
+	void CCollider::OnCollisionExit(CCollider* other)
 	{
 		mCollisionCount = 0;
 		GetOwner()->OnCollisionExit(other);

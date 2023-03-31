@@ -1,7 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 #include "Enums.h"
-#include "Collider.h"
+#include "CCollider.h"
 
 namespace kyr
 {
@@ -16,13 +16,13 @@ namespace kyr
 	};
 	
 	class CScene;
-	class CollisionManager
+	class CCollisionManager
 	{
 	public:
 		static void Update();
 		static void LayerCollision(CScene* scene, eLayerType left, eLayerType right);
-		static void ColliderCollision(Collider* leftCol, Collider* rightCol, eLayerType left, eLayerType right);
-		static bool Intersect(Collider* left, Collider* right);
+		static void ColliderCollision(CCollider* leftCol, CCollider* rightCol, eLayerType left, eLayerType right);
+		static bool Intersect(CCollider* left, CCollider* right);
 
 		static void SetLayer(eLayerType left, eLayerType right, bool value);
 		static void Clear();

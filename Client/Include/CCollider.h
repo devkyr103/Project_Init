@@ -3,21 +3,21 @@
 
 namespace kyr
 {
-	class Collider :
+	class CCollider :
 		public Component
 	{
 	public:
-		Collider();
-		~Collider();
+		CCollider();
+		~CCollider();
 
 		virtual void Initialize();
 		virtual void Update();
 		virtual void Render(Gdiplus::Graphics* gp);
 		virtual void Release();
 
-		virtual void OnCollisionEnter(Collider* other);
-		virtual void OnCollisionStay(Collider* other);
-		virtual void OnCollisionExit(Collider* other);
+		virtual void OnCollisionEnter(CCollider* other);
+		virtual void OnCollisionStay(CCollider* other);
+		virtual void OnCollisionExit(CCollider* other);
 
 		void SetPos(Vector2 pos) { mPos = pos; }
 		void SetSize(Vector2 size) { mSize = size; };
