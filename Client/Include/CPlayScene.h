@@ -19,6 +19,6 @@ namespace kyr
 		virtual void OnExit() override;
 
 	private:
-		CPlayableObject* mPlayableObject;
+		CPlayableObject* mPlayableObject{};
 	};
 }

@@ -1,7 +1,8 @@
 #include "CSceneManager.h"
 #include "CTitleScene.h"
 #include "CPlayScene.h"
-#include "CollisionManager.h"
+#include "CCollisionManager.h"
+#include "CCamera.h"
 
 namespace kyr
 {
@@ -39,6 +40,11 @@ namespace kyr
 		mActiveScene->Render(gp);
 	}
 
+	void CSceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
+	}
+
 	void CSceneManager::Release()
 	{
 		for (CScene* scene : mScenes)
@@ -53,10 +59,12 @@ namespace kyr
 
 	void CSceneManager::LoadScene(eSceneType type)
 	{
+		CCamera::Clear();
+
 		if(mActiveScene)
 			mActiveScene->OnExit();
 
-		CollisionManager::Clear();
+		CCollisionManager::Clear();
 
 		mActiveScene = mScenes[(UINT)type];
 		mActiveScene->OnEnter();

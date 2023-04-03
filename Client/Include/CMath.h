@@ -82,8 +82,8 @@ struct Vector2
 
 	void operator+= (const Vector2& v)
 	{
-		x += x + v.x;
-		y += y + v.y;
+		x += v.x;
+		y += v.y;
 	}
 
 	void operator+= (float f)
@@ -247,5 +247,19 @@ struct Vector2
 	{
 		x /= i;
 		y /= i;
+	}
+	
+	float Length()
+	{
+		return sqrtf(x * x + y * y);
+	}
+
+	Vector2 Normalize()
+	{
+		float length = Length();
+		x /= length;
+		y /= length;
+
+		return *this;
 	}
 };

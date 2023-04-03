@@ -3,12 +3,13 @@
 #include "CTitleObject.h"
 #include "CInput.h"
 #include "CSceneManager.h"
-#include "CollisionManager.h"
+#include "CCollisionManager.h"
+#include "Object.h"
+#include "CCamera.h"
 
 namespace kyr
 {
 	CPlayeScene::CPlayeScene()
-		: mPlayableObject{}
 	{
 	}
 
@@ -18,14 +19,13 @@ namespace kyr
 
 	void CPlayeScene::Initialize()
 	{
-
-		mPlayableObject = new CPlayableObject();
-		AddGameObject(mPlayableObject, eLayerType::Player);
-
-		CTitleObject* obj = new CTitleObject();
-		AddGameObject(obj, eLayerType::Monster);
-
 		CScene::Initialize();
+
+		CGameObject* obj = Instantiate<CPlayableObject>(Vector2(0, 0), eLayerType::Player);
+		Instantiate<CTitleObject>(Vector2(0, 0), eLayerType::Monster);
+		
+		SetWorldSize(Vector2(2000, 1500));
+		CCamera::SetTarget(obj);
 	}
 
 	void CPlayeScene::Update()
@@ -51,7 +51,7 @@ namespace kyr
 
 	void CPlayeScene::OnEnter()
 	{
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		CCollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 	}
 
 	void CPlayeScene::OnExit()

@@ -5,7 +5,7 @@
 #include "CResources.h"
 #include "CTransform.h"
 #include "CAnimator.h"
-#include "Collider.h"
+#include "CCollider.h"
 
 namespace kyr
 {
@@ -19,20 +19,20 @@ namespace kyr
 
 	void CPlayableObject::Initialize()
 	{
-		//mImage = CResources::Load<CImage>(L"PlayableObject", L"..\\Resources\\spr_car_1.png");
-		CTransform* tr = GetComponent<CTransform>();
-		//tr->SetScale(Vector2(2.f, 2.f));
-		tr->SetPivot(Vector2(0.5f, 0.5f));
-		tr->SetPos(Vector2(500.f, 500.f));
+		////mImage = CResources::Load<CImage>(L"PlayableObject", L"..\\Resources\\spr_car_1.png");
+		//CTransform* tr = GetComponent<CTransform>();
+		////tr->SetScale(Vector2(2.f, 2.f));
+		//tr->SetPivot(Vector2(0.5f, 0.5f));
+		//tr->SetPos(Vector2(500.f, 500.f));
 
 		CImage* image = CResources::Load<CImage>(L"test", L"..\\Resources\\spr_car_1.png");
 
 		mAnimator = AddComponent<CAnimator>();
-		mAnimator->CreateAnimation(L"idle", image, Vector2::Zero, 1, 1, 1, Vector2::Zero, 0.1);
+		mAnimator->CreateAnimation(L"idle", image, Vector2::Zero, 1, 1, 1, Vector2::Zero, 0.1f);
 
 		mAnimator->play(L"idle", false);
 
-		Collider* col = AddComponent<Collider>();
+		CCollider* col = AddComponent<CCollider>();
 		col->SetSize(Vector2(100.f, 100.f));
 
 		CGameObject::Initialize();

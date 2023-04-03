@@ -145,6 +145,7 @@ namespace kyr
 		PostUpdate();
 		Collision();
 		Render();
+		
 	}
 
 	void CApplication::Input()

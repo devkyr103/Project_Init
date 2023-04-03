@@ -64,6 +64,12 @@
     <Filter Include="Engine\Component\RigidBody">
       <UniqueIdentifier>{42956c85-0c36-49b1-be63-da34f46feed8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\BackImage">
+      <UniqueIdentifier>{d9494f3d-2c4a-4972-85b4-709ab3af5a98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Camera">
+      <UniqueIdentifier>{03c85bf8-dbe6-4e67-b4da-932d82231f71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -147,6 +153,21 @@
     <ClInclude Include="GdiplusHelperfucntions.h">
       <Filter>main</Filter>
     </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CPaintTool.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionManager.h">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Engine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Engine\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -211,6 +232,18 @@
     </ClCompile>
     <ClCompile Include="CAnimation.cpp">
       <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CPaintTool.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionManager.cpp">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Engine\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

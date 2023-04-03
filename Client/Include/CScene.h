@@ -14,6 +14,7 @@ namespace kyr
 		virtual void Initialize();
 		virtual void Update();
 		virtual void Render(Gdiplus::Graphics* gp);
+		virtual void Destroy();
 		virtual void Release();
 
 		virtual void OnEnter();
@@ -23,8 +24,13 @@ namespace kyr
 
 		std::vector<CGameObject*>& GetGameObjects(eLayerType layer);
 
+		Vector2 GetWorldSize() { return mWorldSize; }
+		void SetWorldSize(Vector2 size) { mWorldSize = size; }
+
 	private:
-		std::vector<CLayer> mLayers;
+		std::vector<CLayer> mLayers{};
+
+		Vector2 mWorldSize;
 	};
 }
 

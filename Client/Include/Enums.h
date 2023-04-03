@@ -1,21 +1,12 @@
 #pragma once
 
-enum class eColorType
-{
-	Red,
-	Green,
-	Black,
-	Blue,
-	Yellow,
-	Max
-};
-
 enum class eComponentType
 {
 	Transform,
-	Collider,
 	SpriteRenderer,
 	Animator,
+	Collider,
+	Rigidbody,
 	Audio,
 	End,
 };
@@ -28,7 +19,7 @@ enum class eLayerType
 	Test,
 	Effect,
 	UI,
-	End,
+	End = 16,
 };
 
 enum class eSceneType

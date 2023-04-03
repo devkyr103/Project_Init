@@ -5,7 +5,7 @@
 #include "CResources.h"
 #include "CTransform.h"
 #include "CAnimator.h"
-#include "Collider.h"
+#include "CCollider.h"
 
 namespace kyr
 {
@@ -19,7 +19,7 @@ namespace kyr
 
 	void CTitleObject::Initialize()
 	{
-		CTransform* tr = GetComponent<CTransform>();
+		//CTransform* tr = GetComponent<CTransform>();
 		//tr->SetScale(Vector2(5.f, 5.f));
 
 		mAnimator = AddComponent<CAnimator>();
@@ -28,7 +28,7 @@ namespace kyr
 
 		mAnimator->play(L"Resourcesgirl", true);
 		
-		Collider* col = AddComponent<Collider>();
+		CCollider* col = AddComponent<CCollider>();
 		col->SetSize(Vector2(100.f, 100.f));
 
 		CGameObject::Initialize();

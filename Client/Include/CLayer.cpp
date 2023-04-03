@@ -33,6 +33,9 @@ namespace kyr
 			if (gameObj == nullptr)
 				continue;
 
+			if (gameObj->GetState() != CGameObject::eState::Active)
+				continue;
+
 			gameObj->Update();
 		}
 	}

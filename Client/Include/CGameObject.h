@@ -8,6 +8,13 @@ namespace kyr
 		public CEntity
 	{
 	public:
+		enum class eState
+		{
+			Active,
+			Pause,
+			InActive
+		};
+
 		CGameObject();
 		virtual ~CGameObject();
 
@@ -16,9 +23,9 @@ namespace kyr
 		virtual void Render(Gdiplus::Graphics* gp);
 		virtual void Release();
 
-		virtual void OnCollisionEnter(class Collider* other);
-		virtual void OnCollisionStay(class Collider* other);
-		virtual void OnCollisionExit(class Collider* other);
+		virtual void OnCollisionEnter(class CCollider* other);
+		virtual void OnCollisionStay(class CCollider* other);
+		virtual void OnCollisionExit(class CCollider* other);
 
 		template<typename T>
 		T* AddComponent()
@@ -43,8 +50,13 @@ namespace kyr
 			return nullptr;
 		}
 
+		eState GetState() { return mState; }
+
+		void SetState(eState state) { mState = state; }
+		
 	private:
-		std::vector<Component*> mComponents;
+		std::vector<Component*> mComponents{};
+		eState mState = eState::Active;
 	};
 
 }
