@@ -34,7 +34,7 @@ namespace kyr
 		{
 			mActiveAnimation->Update();
 
-			if (mbLoop && mActiveAnimation->IsComplete())
+			if (mActiveAnimation->IsComplete())
 			{
 				CAnimator::Events* events = FindEvents(mActiveAnimation->GetName());
 
@@ -70,7 +70,7 @@ namespace kyr
 
 		animation = new CAnimation();
 		animation->Create(sheet, leftTop, column, row, spriteLength, offset, duration);
-		animation->SetName(name);
+		animation->SetAnimationName(name);
 		animation->SetAnimator(this);
 
 		mAnimations.insert(std::make_pair(name, animation));
@@ -188,7 +188,7 @@ namespace kyr
 	{
 		CAnimation* animation = FindAnimation(name);
 
-		CAnimator::Events* events = FindEvents(animation->GetName());
+		CAnimator::Events* events = FindEvents(animation->GetAnimationName());
 
 		return events->mStartEvent.mEvent;
 	}
@@ -197,7 +197,7 @@ namespace kyr
 	{
 		CAnimation* animation = FindAnimation(name);
 
-		CAnimator::Events* events = FindEvents(animation->GetName());
+		CAnimator::Events* events = FindEvents(animation->GetAnimationName());
 
 		return events->mCompleteEvent.mEvent;
 	}
@@ -206,7 +206,7 @@ namespace kyr
 	{
 		CAnimation* animation = FindAnimation(name);
 
-		CAnimator::Events* events = FindEvents(animation->GetName());
+		CAnimator::Events* events = FindEvents(animation->GetAnimationName());
 
 		return events->mEndEvent.mEvent;
 	}

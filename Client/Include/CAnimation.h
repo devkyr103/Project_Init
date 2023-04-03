@@ -33,11 +33,14 @@ namespace kyr
 
 		bool IsComplete() { return mbComplete; }
 		void SetAnimator(CAnimator* animator) { mAnimator = animator; }
+		void SetAnimationName(const std::wstring& name) { mAnimationName = name; }
+		std::wstring& GetAnimationName() { return mAnimationName; }
 
 	private:
 		CAnimator* mAnimator{};
 		CImage* mSpriteSheet{};
 		std::vector<SpriteInfo> mVecSpriteInfo{};
+		std::wstring mAnimationName{};
 		float mTime{};
 		bool mbComplete{};
 		int mSpriteIndex{};
