@@ -1,10 +1,10 @@
 #pragma once
-#include "Component.h"
+#include "CComponent.h"
 
 namespace kyr
 {
 	class CCollider :
-		public Component
+		public CComponent
 	{
 	public:
 		CCollider();

@@ -1,12 +1,12 @@
 #pragma once
-#include "Component.h"
+#include "CComponent.h"
 #include "CAnimation.h"
 #include "CImage.h"
 
 namespace kyr
 {
 	class CAnimator :
-		public Component
+		public CComponent
 	{
 	public:
 		struct  Event

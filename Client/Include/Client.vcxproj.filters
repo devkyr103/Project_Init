@@ -93,7 +93,7 @@
     <ClInclude Include="CEntity.h">
       <Filter>Engine\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
+    <ClInclude Include="CComponent.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
     <ClInclude Include="CMath.h">
@@ -168,6 +168,9 @@
     <ClInclude Include="Object.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="CRigidbody.h">
+      <Filter>Engine\Component\RigidBody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -182,7 +185,7 @@
     <ClCompile Include="CEntity.cpp">
       <Filter>Engine\Common</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
+    <ClCompile Include="CComponent.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
     <ClCompile Include="CMath.cpp">
@@ -244,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="CCamera.cpp">
       <Filter>Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CRigidbody.cpp">
+      <Filter>Engine\Component\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

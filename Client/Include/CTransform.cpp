@@ -3,7 +3,7 @@
 namespace kyr
 {
 	CTransform::CTransform()
-		: Component(eComponentType::Transform)
+		: CComponent(eComponentType::Transform)
 	{
 	}
 

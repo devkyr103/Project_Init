@@ -11,7 +11,7 @@ namespace kyr
 	{
 	}
 
-	CImage* CImage::Create(const std::wstring& name, UINT width, UINT height)
+	CImage* CImage::Create(const std::wstring& name, UINT width, UINT height, Gdiplus::Color argb)
 	{
 		if (width == 0 || height == 0)
 			return nullptr;
@@ -26,40 +26,18 @@ namespace kyr
 		image->mBitmap = new Gdiplus::Bitmap(width, height);
 		image->mWidth = width;
 		image->mHeight = height;
-
-		image->SetKey(name);
-		CResources::Insert<CImage>(name, image);
-
-		return image;
-	}
-
-	CImage* CImage::Create(const std::wstring& name, UINT width, UINT height, COLORREF rgb)
-	{
-		if (width == 0 || height == 0)
-			return nullptr;
-
-		CImage* image = CResources::Find<CImage>(name);
-
-		if (image != nullptr)
-			return image;
-
-		image = new CImage();
-
-		image->mBitmap = new Gdiplus::Bitmap(width, height);
-		image->mWidth = width;
-		image->mHeight = height;
-
+		
 		image->SetKey(name);
 		CResources::Insert<CImage>(name, image);
 
 		Gdiplus::Graphics* gp = new Gdiplus::Graphics(image->GetBitmap());
-		Gdiplus::Brush* brush = new Gdiplus::SolidBrush(Gdiplus::Color(0,0,0));
+		Gdiplus::Brush* brush = new Gdiplus::SolidBrush(argb);
 
 		gp->FillRectangle(brush, 0, 0, width, height);
 
 		SAFE_DELETE(gp);
 		SAFE_DELETE(brush);
-
+		
 		return image;
 	}
 

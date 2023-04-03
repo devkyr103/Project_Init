@@ -10,8 +10,7 @@ namespace kyr
 		CImage();
 		~CImage();
 
-		static CImage* Create(const std::wstring& name, UINT width, UINT height);
-		static CImage* Create(const std::wstring& name, UINT width, UINT height, COLORREF rgb);
+		static CImage* Create(const std::wstring& name, UINT width, UINT height, Gdiplus::Color argb = Gdiplus::Color(0, 255, 255, 255));
 
 		virtual HRESULT Load(const std::wstring& path) override;
 

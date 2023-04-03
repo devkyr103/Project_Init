@@ -5,7 +5,7 @@
 namespace kyr
 {
 	CAnimator::CAnimator()
-		: Component(eComponentType::Animator)
+		: CComponent(eComponentType::Animator)
 	{
 	}
 

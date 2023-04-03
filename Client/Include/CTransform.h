@@ -1,10 +1,10 @@
 #pragma once
-#include "Component.h"
+#include "CComponent.h"
 
 namespace kyr
 {
 	class CTransform :
-		public Component
+		public CComponent
 	{
 	public:
 		CTransform();

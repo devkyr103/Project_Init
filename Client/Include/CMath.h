@@ -129,6 +129,11 @@ struct Vector2
 		return result;
 	}
 
+	Vector2 operator-() const
+	{
+		return Vector2(-x, -y);
+	}
+
 	// -=
 	void operator-=(const Vector2& v)
 	{
@@ -155,6 +160,16 @@ struct Vector2
 		
 		result.x = x * v.x;
 		result.y = y * v.y;
+
+		return result;
+	}
+
+	Vector2 operator*(double d) const
+	{
+		Vector2 result;
+
+		result.x = x * d;
+		result.y = y * d;
 
 		return result;
 	}
@@ -254,7 +269,7 @@ struct Vector2
 		return sqrtf(x * x + y * y);
 	}
 
-	Vector2 Normalize()
+	Vector2& Normalize()
 	{
 		float length = Length();
 		x /= length;
@@ -262,4 +277,39 @@ struct Vector2
 
 		return *this;
 	}
+
+	void Clear()
+	{
+		x = 0;
+		y = 0;
+	}
 };
+
+namespace kyr::math
+{
+	//float x = dir.x * cosf(PI / 5.0f) - dir.y * sinf(PI / 5.0f);
+//float y = dir.x * sinf(PI / 5.0f) + dir.y * cosf(PI / 5.0f);
+
+	inline static Vector2 Rotate(Vector2 vector, float degree)
+	{
+		float radian = (degree / 180.0f) * PI;
+		vector.Normalize();
+
+		float x = vector.x * cosf(radian) - vector.y * sinf(radian);
+		float y = vector.x * sinf(radian) + vector.y * cosf(radian);
+		//atan
+		//atan();
+		return Vector2(x, y);
+	}
+
+	inline static float Dot(Vector2& v1, Vector2& v2)
+	{
+		return v1.x * v2.x + v1.y * v2.y;
+	}
+
+	inline static float Cross(Vector2& v1, Vector2& v2)
+	{
+		return v1.x * v2.y - v1.y * v2.x;
+	}
+
+}

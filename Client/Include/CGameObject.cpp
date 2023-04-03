@@ -11,7 +11,7 @@ namespace kyr
 
 	CGameObject::~CGameObject()
 	{
-		for (Component* comp : mComponents)
+		for (CComponent* comp : mComponents)
 		{
 			delete comp;
 			comp = nullptr;
@@ -20,7 +20,7 @@ namespace kyr
 
 	void CGameObject::Initialize()
 	{
-		for (Component* comp : mComponents)
+		for (CComponent* comp : mComponents)
 		{
 			if (comp == nullptr)
 				continue;
@@ -31,7 +31,7 @@ namespace kyr
 
 	void CGameObject::Update()
 	{
-		for (Component* comp : mComponents)
+		for (CComponent* comp : mComponents)
 		{
 			if (comp == nullptr)
 				continue;
@@ -42,7 +42,7 @@ namespace kyr
 
 	void CGameObject::Render(Gdiplus::Graphics* gp)
 	{
-		for (Component* comp : mComponents)
+		for (CComponent* comp : mComponents)
 		{
 			if (comp == nullptr)
 				continue;

@@ -1,6 +1,6 @@
 #pragma once
 #include "CEntity.h"
-#include "Component.h"
+#include "CComponent.h"
 
 namespace kyr
 {
@@ -41,7 +41,7 @@ namespace kyr
 		template<typename T>
 		T* GetComponent()
 		{
-			for (Component* comp : mComponents)
+			for (CComponent* comp : mComponents)
 			{
 				if (dynamic_cast<T*>(comp))
 					return dynamic_cast<T*>(comp);
@@ -55,7 +55,7 @@ namespace kyr
 		void SetState(eState state) { mState = state; }
 		
 	private:
-		std::vector<Component*> mComponents{};
+		std::vector<CComponent*> mComponents{};
 		eState mState = eState::Active;
 	};
 

@@ -4,12 +4,12 @@
 namespace kyr
 {
 	class CGameObject;
-	class Component
+	class CComponent
 		: public CEntity
 	{
 	public:
-		Component(eComponentType type);
-		~Component();
+		CComponent(eComponentType type);
+		~CComponent();
 		
 		virtual void Initialize();
 		virtual void Update();

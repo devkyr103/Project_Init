@@ -9,7 +9,7 @@ namespace kyr
 	UINT CCollider::ColliderNumber = 0;
 
 	CCollider::CCollider()
-		: Component(eComponentType::Collider)
+		: CComponent(eComponentType::Collider)
 		, mID(ColliderNumber++)
 	{
 	}
