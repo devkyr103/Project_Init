@@ -1,5 +1,6 @@
 #include "CImage.h"
-#include "CResources.h"
+#include "CResourceManager.h"
+#include "CApplication.h"
 
 namespace kyr
 {
@@ -16,7 +17,7 @@ namespace kyr
 		if (width == 0 || height == 0)
 			return nullptr;
 
-		CImage* image = CResources::Find<CImage>(name);
+		CImage* image = CResourceManager::Find<CImage>(name);
 
 		if (image != nullptr)
 			return image;
@@ -28,7 +29,7 @@ namespace kyr
 		image->mHeight = height;
 		
 		image->SetKey(name);
-		CResources::Insert<CImage>(name, image);
+		CResourceManager::Insert<CImage>(name, image);
 
 		Gdiplus::Graphics* gp = new Gdiplus::Graphics(image->GetBitmap());
 		Gdiplus::Brush* brush = new Gdiplus::SolidBrush(argb);
@@ -50,6 +51,8 @@ namespace kyr
 
 		mWidth = mBitmap->GetWidth();
 		mHeight = mBitmap->GetHeight();
+
+		mCachedBitmap = new Gdiplus::CachedBitmap(mBitmap, CApplication::GetBackGP());
 
 		return S_OK;
 	}

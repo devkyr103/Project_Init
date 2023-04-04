@@ -3,7 +3,8 @@
 enum class eComponentType
 {
 	Transform,
-	SpriteRenderer,
+	BackImage,
+	//SpriteRenderer,
 	Animator,
 	Collider,
 	Rigidbody,
@@ -14,6 +15,7 @@ enum class eComponentType
 enum class eLayerType
 {
 	BG,
+	BackObj,
 	Monster,
 	Player,
 	Test,
@@ -25,7 +27,12 @@ enum class eLayerType
 enum class eSceneType
 {
 	Title,
-	Play,
-	Ending,
+	Pride,
+	Anger,
+	Greed,
+	Gluttony,
+	Lust,
+	Envy,
+	Sloth,
 	End,
 };

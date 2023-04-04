@@ -33,7 +33,7 @@ namespace kyr
 		static UINT GetClientWidth() { return mWidth; }
 		static UINT GetClientHeight() { return mHeight; }
 
-
+		static Gdiplus::Graphics* GetBackGP() { return mBackGp; }
 
 	private:
 		static HWND		mHWnd;				// 윈도우 인스턴스 핸들
@@ -47,7 +47,7 @@ namespace kyr
 
 		// GDI+
 		ULONG_PTR	gdiplusToken{};			// GDI+ 토큰
-		Gdiplus::Graphics* mBackGp{};		// 백 그래픽스
+		static Gdiplus::Graphics* mBackGp;		// 백 그래픽스
 
 		// Buff Size
 		static UINT	mWidth;

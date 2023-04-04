@@ -2,11 +2,11 @@
 #include "Client.h"
 #include "CTime.h"
 #include "CInput.h"
+#include "CSoundManager.h"
 #include "CSceneManager.h"
-#include "CResources.h"
+#include "CResourceManager.h"
 #include "CCollisionManager.h"
 #include "CCamera.h"
-
 
 namespace kyr
 {
@@ -14,6 +14,7 @@ namespace kyr
 
 	bool CApplication::m_Loop = true;
 	HWND CApplication::mHWnd{};
+	Gdiplus::Graphics* CApplication::mBackGp{};
 	UINT CApplication::mWidth{};
 	UINT CApplication::mHeight{};
 	RECT CApplication::mRect{};
@@ -109,6 +110,7 @@ namespace kyr
 		// Initialize
 		CTime::Initialize();
 		CInput::Initialize();
+		CSoundManager::Initialize();
 		CSceneManager::Initialize();
 		CCamera::Initialize();
 
@@ -133,7 +135,7 @@ namespace kyr
 		}
 
 		CSceneManager::Release();
-		CResources::Release();
+		CResourceManager::Release();
 
 		return (int)msg.wParam;
 	}

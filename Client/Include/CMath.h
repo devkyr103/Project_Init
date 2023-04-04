@@ -35,6 +35,12 @@ struct Vector2
 
 	Vector2(Vector2&&) = default;
 	Vector2& operator=(Vector2&&) = default;
+
+	void operator=(POINT p)
+	{
+		x = (float)p.x;
+		y = (float)p.y;
+	}
 	
 	// comp
 	bool operator ==(const Vector2& v) const

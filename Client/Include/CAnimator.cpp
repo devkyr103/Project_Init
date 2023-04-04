@@ -1,5 +1,5 @@
 #include "CAnimator.h"
-#include "CResources.h"
+#include "CResourceManager.h"
 #include "GdiplusHelperfucntions.h"
 
 namespace kyr
@@ -92,7 +92,7 @@ namespace kyr
 			std::wstring fileName = p.path().filename();
 			std::wstring fullName = path + L"\\" + fileName;
 
-			CImage* image = CResources::Load<CImage>(fileName, fullName);
+			CImage* image = CResourceManager::Load<CImage>(fileName, fullName);
 
 			images.push_back(image);
 

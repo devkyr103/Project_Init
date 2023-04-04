@@ -20,7 +20,7 @@ namespace kyr
 	float CCamera::mAlpha = 1.f;
 	float CCamera::mAlphaTime = 0.f;
 	float CCamera::mEndTime = 10.f;
-	bool CCamera::mShake = false;
+	bool CCamera::mShake = true;
 
 	// Clip
 	Gdiplus::GraphicsPath* CCamera::mPath{};
@@ -51,9 +51,9 @@ namespace kyr
 
 	void CCamera::Update()
 	{
-		if (mTarget)
+		/*if (mTarget)
 		{
-			mTargetPosition = mTarget->GetComponent<CTransform>()->GetPos();
+			mTargetPosition = CInput::GetMousePos();
 		}
 		else
 		{
@@ -68,7 +68,9 @@ namespace kyr
 
 			if (CInput::GetKey(eKeyCode::RIGHT))
 				mTargetPosition.x += 100.f * CTime::GetDeltaTime();
-		}
+		}*/
+
+		mTargetPosition = CInput::GetMousePos();
 
 		// Update CameraPos
 		SetPath(CalcFocusPos(mTargetPosition));
@@ -123,15 +125,25 @@ namespace kyr
 
 	void CCamera::Render(Gdiplus::Graphics* gp)
 	{
-		Gdiplus::PathGradientBrush br(mPath);
-		br.SetCenterColor(Gdiplus::Color(0, 255, 255, 255));
 
-		Gdiplus::Color c(255, 0, 0, 0);
-		int cnt = 1;
+		if (mPathType == eClipPathType::Full)
+		{
 
-		br.SetSurroundColors(&c, &cnt);
+		}
+		else if (mPathType == eClipPathType::Ellipse)
+		{
+			Gdiplus::PathGradientBrush br(mPath);
 
-		gp->FillPath(&br, mPath);
+			br.SetCenterColor(Gdiplus::Color(0, 255, 255, 255));
+
+			int cnt = 1;
+			Gdiplus::Color c(255, 0, 0, 0);
+
+			br.SetSurroundColors(&c, &cnt);
+
+			gp->FillPath(&br, mPath);
+		}
+
 	}
 
 	void CCamera::Clear()

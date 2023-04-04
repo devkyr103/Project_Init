@@ -157,6 +157,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CAngerScene.h" />
+    <ClInclude Include="CBackImage.h" />
+    <ClInclude Include="CGreedScene.h" />
+    <ClInclude Include="CPaintingObj.h" />
+    <ClInclude Include="CPaintingScene.h" />
+    <ClInclude Include="CBackGroundObj.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CAnimator.h" />
@@ -166,8 +172,11 @@
     <ClInclude Include="CCollisionManager.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CPaintTool.h" />
+    <ClInclude Include="CPrideScene.h" />
     <ClInclude Include="CResource.h" />
     <ClInclude Include="CRigidbody.h" />
+    <ClInclude Include="CSound.h" />
+    <ClInclude Include="CSoundManager.h" />
     <ClInclude Include="CTitleObject.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="CEntity.h" />
@@ -179,7 +188,7 @@
     <ClInclude Include="CLayer.h" />
     <ClInclude Include="CMath.h" />
     <ClInclude Include="CPlayableObject.h" />
-    <ClInclude Include="CResources.h" />
+    <ClInclude Include="CResourceManager.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneManager.h" />
     <ClInclude Include="CTime.h" />
@@ -192,6 +201,12 @@
     <ClInclude Include="CTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CAngerScene.cpp" />
+    <ClCompile Include="CBackImage.cpp" />
+    <ClCompile Include="CGreedScene.cpp" />
+    <ClCompile Include="CPaintingObj.cpp" />
+    <ClCompile Include="CPaintingScene.cpp" />
+    <ClCompile Include="CBackGroundObj.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CAnimation.cpp" />
     <ClCompile Include="CAnimator.cpp" />
@@ -200,6 +215,7 @@
     <ClCompile Include="CCollisionManager.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CPaintTool.cpp" />
+    <ClCompile Include="CPrideScene.cpp" />
     <ClCompile Include="CResource.cpp" />
     <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="CGameObject.cpp" />
@@ -209,10 +225,12 @@
     <ClCompile Include="CLayer.cpp" />
     <ClCompile Include="CMath.cpp" />
     <ClCompile Include="CPlayableObject.cpp" />
-    <ClCompile Include="CResources.cpp" />
+    <ClCompile Include="CResourceManager.cpp" />
     <ClCompile Include="CRigidbody.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="CSound.cpp" />
+    <ClCompile Include="CSoundManager.cpp" />
     <ClCompile Include="CTime.cpp" />
     <ClCompile Include="CTitleObject.cpp" />
     <ClCompile Include="main.cpp" />

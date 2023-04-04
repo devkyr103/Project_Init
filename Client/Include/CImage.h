@@ -35,6 +35,7 @@ namespace kyr
 		}
 
 		Gdiplus::Bitmap* GetBitmap() { return mBitmap; }
+		Gdiplus::CachedBitmap* GetCachedBitmap() { return mCachedBitmap; }
 
 		Gdiplus::ImageAttributes* GetImageAttributes() { return &mImageAtt; }
 		Gdiplus::ColorMatrix* GetColorMatrix() { return &mColorMtrx; }
@@ -44,7 +45,9 @@ namespace kyr
 		UINT GetHeight() { return mHeight; }
 
 	private:
-		Gdiplus::Bitmap* mBitmap{};     // 로딩한 이미지
+		Gdiplus::Bitmap* mBitmap{};						// 로딩한 이미지
+		Gdiplus::CachedBitmap* mCachedBitmap{};	
+
 
 		Gdiplus::ImageAttributes	mImageAtt{};		// Alpha, Colorkey 설정을 위한 속성
 		Gdiplus::ColorMatrix		mColorMtrx{};		// ImageAtt에 적용할 Mtrx(Alpha 값에 사용)

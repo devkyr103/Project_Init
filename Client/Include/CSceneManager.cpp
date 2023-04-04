@@ -1,6 +1,8 @@
 #include "CSceneManager.h"
 #include "CTitleScene.h"
-#include "CPlayScene.h"
+#include "CPrideScene.h"
+#include "CAngerScene.h"
+#include "CGreedScene.h"
 #include "CCollisionManager.h"
 #include "CCamera.h"
 
@@ -14,7 +16,10 @@ namespace kyr
 		mScenes.resize((UINT)eSceneType::End);
 
 		mScenes[(UINT)eSceneType::Title] = new CTitleScene();
-		mScenes[(UINT)eSceneType::Play] = new CPlayeScene();
+		mScenes[(UINT)eSceneType::Pride] = new CPrideScene();
+		mScenes[(UINT)eSceneType::Anger] = new CAngerScene();
+		mScenes[(UINT)eSceneType::Greed] = new CGreedScene();
+	
 
 		for (CScene* scene : mScenes)
 		{
@@ -27,7 +32,7 @@ namespace kyr
 
 		//mActiveScene = mScenes[(UINT)eSceneType::Play];
 
-		LoadScene(eSceneType::Play);
+		LoadScene(eSceneType::Title);
 	}
 
 	void CSceneManager::Update()

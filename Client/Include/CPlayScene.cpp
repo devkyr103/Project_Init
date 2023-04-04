@@ -1,6 +1,7 @@
 #include "CPlayScene.h"
 #include "CPlayableObject.h"
 #include "CTitleObject.h"
+#include "CBackGroundObj.h"
 #include "CInput.h"
 #include "CSceneManager.h"
 #include "CCollisionManager.h"
@@ -21,10 +22,12 @@ namespace kyr
 	{
 		CScene::Initialize();
 
-		CGameObject* obj = Instantiate<CPlayableObject>(Vector2(0, 0), eLayerType::Player);
+		Instantiate<CBackGroundObj>(Vector2::Zero, eLayerType::BG);
+
+		CGameObject* obj = Instantiate<CPlayableObject>(Vector2::Zero, eLayerType::Player);
 		Instantiate<CTitleObject>(Vector2(0, 0), eLayerType::Monster);
 		
-		SetWorldSize(Vector2(2000, 1500));
+		SetWorldSize(Vector2(1600, 900));
 		CCamera::SetTarget(obj);
 	}
 

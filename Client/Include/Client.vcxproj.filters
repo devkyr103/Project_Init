@@ -46,9 +46,6 @@
     <Filter Include="Engine\Time">
       <UniqueIdentifier>{9a088896-12f7-43c3-8005-2fca1c0670f0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Player">
-      <UniqueIdentifier>{65f61bba-ffc9-4518-bc80-29ec6469a4c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Scene">
       <UniqueIdentifier>{b188a7f8-0a1a-4282-b7b7-24c26934646e}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,21 @@
     </Filter>
     <Filter Include="Engine\Camera">
       <UniqueIdentifier>{03c85bf8-dbe6-4e67-b4da-932d82231f71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Image">
+      <UniqueIdentifier>{cf62e4eb-c2f2-49da-9cc4-3e28ff6f826e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Sound">
+      <UniqueIdentifier>{6c5858ae-1304-408e-9dbd-68b77636acb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object">
+      <UniqueIdentifier>{ecabcf8a-186c-4370-8f59-5ad668188b09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Object\Player">
+      <UniqueIdentifier>{65f61bba-ffc9-4518-bc80-29ec6469a4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PaintingScene">
+      <UniqueIdentifier>{c6ec239f-84d5-4528-9319-02d85b50eda6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +121,7 @@
       <Filter>Engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CPlayableObject.h">
-      <Filter>Contents\Player</Filter>
+      <Filter>Contents\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="CSceneManager.h">
       <Filter>Engine\Scene</Filter>
@@ -120,10 +132,7 @@
     <ClInclude Include="CResource.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="CResources.h">
-      <Filter>Engine\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="CImage.h">
+    <ClInclude Include="CResourceManager.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="CInput.h">
@@ -139,7 +148,7 @@
       <Filter>main</Filter>
     </ClInclude>
     <ClInclude Include="CTitleObject.h">
-      <Filter>Contents\Player</Filter>
+      <Filter>Contents\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="CTransform.h">
       <Filter>Engine\Component\Transform</Filter>
@@ -170,6 +179,36 @@
     </ClInclude>
     <ClInclude Include="CRigidbody.h">
       <Filter>Engine\Component\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="CImage.h">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Engine\Resource\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundManager.h">
+      <Filter>Engine\Resource\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrideScene.h">
+      <Filter>Contents\Scene\PaintingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackGroundObj.h">
+      <Filter>Contents\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CPaintingScene.h">
+      <Filter>Contents\Scene\PaintingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CPaintingObj.h">
+      <Filter>Contents\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackImage.h">
+      <Filter>Engine\Component\BackImage</Filter>
+    </ClInclude>
+    <ClInclude Include="CAngerScene.h">
+      <Filter>Contents\Scene\PaintingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CGreedScene.h">
+      <Filter>Contents\Scene\PaintingScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -204,15 +243,12 @@
       <Filter>Engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CPlayableObject.cpp">
-      <Filter>Contents\Player</Filter>
+      <Filter>Contents\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="CResource.cpp">
       <Filter>Engine\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="CResources.cpp">
-      <Filter>Engine\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="CImage.cpp">
+    <ClCompile Include="CResourceManager.cpp">
       <Filter>Engine\Resource</Filter>
     </ClCompile>
     <ClCompile Include="CInput.cpp">
@@ -225,7 +261,7 @@
       <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CTitleObject.cpp">
-      <Filter>Contents\Player</Filter>
+      <Filter>Contents\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="CTransform.cpp">
       <Filter>Engine\Component\Transform</Filter>
@@ -250,6 +286,36 @@
     </ClCompile>
     <ClCompile Include="CRigidbody.cpp">
       <Filter>Engine\Component\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="CImage.cpp">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Engine\Resource\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundManager.cpp">
+      <Filter>Engine\Resource\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CPrideScene.cpp">
+      <Filter>Contents\Scene\PaintingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackGroundObj.cpp">
+      <Filter>Contents\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CPaintingScene.cpp">
+      <Filter>Contents\Scene\PaintingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CPaintingObj.cpp">
+      <Filter>Contents\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackImage.cpp">
+      <Filter>Engine\Component\BackImage</Filter>
+    </ClCompile>
+    <ClCompile Include="CAngerScene.cpp">
+      <Filter>Contents\Scene\PaintingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CGreedScene.cpp">
+      <Filter>Contents\Scene\PaintingScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

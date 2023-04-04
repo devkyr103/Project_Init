@@ -2,7 +2,7 @@
 #include "CTime.h"
 #include "CSceneManager.h"
 #include "CInput.h"
-#include "CResources.h"
+#include "CResourceManager.h"
 #include "CTransform.h"
 #include "CAnimator.h"
 #include "CCollider.h"
@@ -25,7 +25,7 @@ namespace kyr
 		//tr->SetPivot(Vector2(0.5f, 0.5f));
 		//tr->SetPos(Vector2(500.f, 500.f));
 
-		CImage* image = CResources::Load<CImage>(L"test", L"..\\Resources\\spr_car_1.png");
+		CImage* image = CResourceManager::Load<CImage>(L"test", L"..\\Resources\\spr_car_1.png");
 
 		mAnimator = AddComponent<CAnimator>();
 		mAnimator->CreateAnimation(L"idle", image, Vector2::Zero, 1, 1, 1, Vector2::Zero, 0.1f);

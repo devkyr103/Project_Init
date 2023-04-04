@@ -2,7 +2,7 @@
 #include "CTime.h"
 #include "CSceneManager.h"
 #include "CInput.h"
-#include "CResources.h"
+#include "CResourceManager.h"
 #include "CTransform.h"
 #include "CAnimator.h"
 #include "CCollider.h"
