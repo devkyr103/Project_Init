@@ -3,7 +3,7 @@
 
 namespace kyr
 {
-	class CResources
+	class CResourceManager
 	{
 	public:
 		template<typename T>
@@ -22,7 +22,7 @@ namespace kyr
 		template<typename T>
 		static T* Load(const std::wstring& key, const std::wstring& path)
 		{
-			T* resource = CResources::Find<T>(key);
+			T* resource = CResourceManager::Find<T>(key);
 
 			if (resource != nullptr)
 			{
